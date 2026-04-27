@@ -1,22 +1,688 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>My Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alexa Bueno</title>
+  <link rel="icon" href="tab.png" type="image/png">
+<script>
+  document.documentElement.classList.add("preload");
+</script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <h1>My Portfolio 🔥</h1>
-  <p>I build websites.</p>
+  <div class="hero-wrap">
+    <div class="brand" id="brand">Alexa Bueno</div>
 
-  <button onclick="scrollToProjects()">View My Work</button>
+    <div class="skills" id="skills">
+      <div class="pill">UX/UI Designer</div>
+      <div class="pill">Graphic Designer</div>
+      <div class="pill">UX Researcher</div>
+      <div class="pill">Web Designer</div>
+    </div>
 
-  <section id="projects">
-    <h2>My Projects</h2>
-    <p>Project 1</p>
-    <p>Project 2</p>
+    <div class="tagline" id="tagline">
+      I help funded start-ups ship iconic brands, conversion-ready sites, and investor-proof decks.
+    </div>
+
+    <div class="cta" id="cta">Check my other projects</div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress" id="progress">
+    <div class="bar" id="bar"></div>
+  </div>
+
+  <div class="availability">
+    <span>Available</span>
+    <span>for work</span>
+  </div>
+
+  <div class="book-call">
+    <i class="ri-phone-line"></i>
+  </div>
+
+  <div class="side-nav">
+    <div class="nav-item active" data-label="Home">
+      <i class="ri-home-4-line"></i>
+    </div>
+    <div class="nav-item" data-label="Projects">
+      <i class="ri-folder-3-line"></i>
+    </div>
+    <div class="nav-item" data-label="About">
+      <i class="ri-user-3-line"></i>
+    </div>
+    <div class="nav-item" data-label="Contact">
+      <i class="ri-mail-line"></i>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-track"></div>
+    <div class="scroll-thumb" id="scrollThumb"></div>
+  </div>
+
+  <!-- MODEL -->
+  <div class="model-container" id="modelSection">
+    <model-viewer id="viewer" src="./model.glb" autoplay camera-controls disable-pan disable-zoom
+      interaction-prompt="none" touch-action="pan-y" shadow-intensity="0" exposure="1.2" camera-orbit="30deg 75deg 200%"
+      field-of-view="30deg">
+    </model-viewer>
+  </div>
+
+  <!-- PROJECTS -->
+<section class="projects">
+
+ <div class="project-card" data-project="project1">
+  <div class="project-inner">
+    <img src="project1.png" class="project-img">
+  </div>
+</div>
+
+<div class="project-card" data-project="project2">
+  <div class="project-inner">
+    <img src="Project2.png" class="project-img">
+  </div>
+</div>
+
+ <div class="project-card" data-project="project3">
+  <div class="project-inner">
+    <img src="project3.png" class="project-img">
+  </div>
+</div>
+
+</section>
+
+  <!-- ABOUT -->
+  <section class="about">
+
+    <div class="about-container">
+
+      <!-- LEFT -->
+      <div class="about-image">
+        <img src="your-image.jpg" alt="Alexa" class="about-photo" />
+      </div>
+
+      <!-- CENTER -->
+      <div class="about-content">
+        <h2 class="about-title">Alexa Bueno</h2>
+
+        <p class="about-text">
+          Started with a clear mission to elevate branding to the same level of importance as the product.
+          Too often, companies over invest in one while neglecting the other, leading to conversion losses.
+          When branding oversells, customers feel misled. When it's too weak, trust and perceived value suffer.
+          The key is to create branding that truly reflects the product, driving conversions, fostering loyalty,
+          and standing out in a competitive market.
+        </p>
+
+      <div class="about-cta" id="aboutCta">Work with Alexa →</div>      </div>
+
+      <!-- RIGHT -->
+      <div class="about-art">
+
+        <!-- BISHOP -->
+        <div class="chess-wrap c1" data-cert="cert1.jpg">
+          <model-viewer class="chess" src="./bishop.glb" autoplay loading="eager" reveal="auto"
+            interaction-prompt="none" disable-progress-bar camera-controls disable-zoom disable-pan
+            interaction-prompt="none" exposure="0.85" shadow-intensity="1" environment-image="neutral"
+            orientation="0deg -12deg 0deg" camera-orbit="100deg 75deg 140%" field-of-view="25deg">
+          </model-viewer>
+        </div>
+
+        <!-- QUEEN -->
+        <div class="chess-wrap c2" data-cert="cert2.png">
+          <model-viewer class="chess" src="./queen.glb" autoplay loading="eager" reveal="auto" interaction-prompt="none"
+            disable-progress-bar camera-controls disable-zoom disable-pan interaction-prompt="none" exposure="0.85"
+            shadow-intensity="1" environment-image="neutral" orientation="0deg 28deg 0deg"
+            camera-orbit="30deg 75deg 135%" field-of-view="25deg">
+          </model-viewer>
+        </div>
+
+        <!-- ROOK -->
+        <div class="chess-wrap c3" data-cert="cert3.jpg">
+          <model-viewer class="chess" src="./rook.glb" autoplay loading="eager" reveal="auto" interaction-prompt="none"
+            disable-progress-bar camera-controls disable-zoom disable-pan interaction-prompt="none" exposure="0.85"
+            shadow-intensity="1" environment-image="neutral" orientation="0deg -8deg 0deg"
+            camera-orbit="150deg 75deg 160%" field-of-view="25deg">
+          </model-viewer>
+        </div>
+
+        <!-- KEEP THIS -->
+        <div class="certificate-btn">
+          <span>Certificates</span>
+          <small>(Click the chess pieces to view)</small>
+        </div>
+
+      </div>
+
+    </div>
+
+    </div>
+
+    <!-- CERT MODAL -->
+    <div class="cert-modal" id="certModal">
+      <div class="cert-content">
+        <div class="close-btn">&times;</div>
+        <img id="certImage" src="" alt="">
+      </div>
+    </div>
+
+
+
+    <div class="toolbox">
+
+  <div class="toolbox-title">
+    <strong>Everyday's Toolbox</strong>
+    <span>Mastered for every project.</span>
+  </div>
+
+  <div class="toolbox-track">
+
+<div class="tool ae"><div class="tool-inner"><span>Ae</span></div></div>
+<div class="tool ai"><div class="tool-inner"><span>Ai</span></div></div>
+<div class="tool figma"><div class="tool-inner"><span>Figma</span></div></div>
+<div class="tool pr"><div class="tool-inner"><span>Pr</span></div></div>
+<div class="tool ps"><div class="tool-inner"><span>Ps</span></div></div>
+<div class="tool web"><div class="tool-inner"><span>Web</span></div></div>
+
+    <!-- duplicate -->
+   <div class="tool ae"><div class="tool-inner"><span>Ae</span></div></div>
+<div class="tool ai"><div class="tool-inner"><span>Ai</span></div></div>
+<div class="tool figma"><div class="tool-inner"><span>Figma</span></div></div>
+<div class="tool pr"><div class="tool-inner"><span>Pr</span></div></div>
+<div class="tool ps"><div class="tool-inner"><span>Ps</span></div></div>
+<div class="tool web"><div class="tool-inner"><span>Web</span></div></div>
+
+     <div class="tool ae"><div class="tool-inner"><span>Ae</span></div></div>
+<div class="tool ai"><div class="tool-inner"><span>Ai</span></div></div>
+<div class="tool figma"><div class="tool-inner"><span>Figma</span></div></div>
+<div class="tool pr"><div class="tool-inner"><span>Pr</span></div></div>
+<div class="tool ps"><div class="tool-inner"><span>Ps</span></div></div>
+<div class="tool web"><div class="tool-inner"><span>Web</span></div></div>
+
+   
+  <div class="tool ae"><div class="tool-inner"><span>Ae</span></div></div>
+<div class="tool ai"><div class="tool-inner"><span>Ai</span></div></div>
+<div class="tool figma"><div class="tool-inner"><span>Figma</span></div></div>
+<div class="tool pr"><div class="tool-inner"><span>Pr</span></div></div>
+<div class="tool ps"><div class="tool-inner"><span>Ps</span></div></div>
+<div class="tool web"><div class="tool-inner"><span>Web</span></div></div>
+
+   
+  </div>
+
+</div>
+
   </section>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
 
+    <div class="testi-header">
+      <span>[ TESTIMONIALS ]</span>
+      <h2>Don't take our word for it</h2>
+      <p>TAKE THEIRS</p>
+    </div>
+
+    <div class="testi-wrapper" id="testiWrapper">
+
+      <div class="testi-track" id="testiTrack">
+
+        <!-- CARD -->
+        <div class="testi-card">
+          <p class="testi-text">
+            Thank you Alexa, I love working with you! Why? Simple: because you’re not just a service provider. You don’t
+            work for us, you work with us and that makes all the difference.
+          </p>
+          <div class="testi-footer">
+            <img src="img1.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Michelle Kim</strong>
+              <span>Supervisor in IHD LAB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            We faced a real challenge with branding. Alexa came highly recommended by major players and they exceeded
+            all our expectations.
+          </p>
+          <div class="testi-footer">
+            <img src="img2.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Sharon Branzuela</strong>
+              <span>Small Business Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            Amazing experience with Alexa! The team immediately understood my vision and turned it into a clear, modern,
+            and impactful brand identity.
+          </p>
+          <div class="testi-footer">
+            <img src="img3.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Aileen Belanueva</strong>
+              <span>Startup Team Member</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            Uptown chose Alexa to lead our rebranding project. The boost in credibility has significantly improved
+            our ability to close deals.
+          </p>
+          <div class="testi-footer">
+            <img src="img4.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Dave Jaro</strong>
+              <span>Small Business Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            Working with Alexa has been an absolute pleasure. Beyond their creativity and professionalism, there’s a
+            real sense of kindness and care.
+          </p>
+          <div class="testi-footer">
+            <img src="img5.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Jéry Bendayan</strong>
+              <span>Marketing Assistant</span>
+            </div>
+          </div>
+        </div>
+    <div class="testi-card">
+          <p class="testi-text">
+            Thank you Alexa, I love working with you! Why? Simple: because you’re not just a service provider. You don’t
+            work for us, you work with us and that makes all the difference.
+          </p>
+          <div class="testi-footer">
+            <img src="img1.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Michelle Kim</strong>
+              <span>Supervisor in IHD LAB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            We faced a real challenge with branding. Alexa came highly recommended by major players and they exceeded
+            all our expectations.
+          </p>
+          <div class="testi-footer">
+            <img src="img2.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Sharon Branzuela</strong>
+              <span>Small Business Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            Amazing experience with Alexa! The team immediately understood my vision and turned it into a clear, modern,
+            and impactful brand identity.
+          </p>
+          <div class="testi-footer">
+            <img src="img3.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Aileen Belanueva</strong>
+              <span>Startup Team Member</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            Uptown chose Alexa to lead our rebranding project. The boost in credibility has significantly improved
+            our ability to close deals.
+          </p>
+          <div class="testi-footer">
+            <img src="img4.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Dave Jaro</strong>
+              <span>Small Business Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            Working with Alexa has been an absolute pleasure. Beyond their creativity and professionalism, there’s a
+            real sense of kindness and care.
+          </p>
+          <div class="testi-footer">
+            <img src="img5.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Jéry Bendayan</strong>
+              <span>Marketing Assistant</span>
+            </div>
+          </div>
+        </div>   <div class="testi-card">
+          <p class="testi-text">
+            Thank you Alexa, I love working with you! Why? Simple: because you’re not just a service provider. You don’t
+            work for us, you work with us and that makes all the difference.
+          </p>
+          <div class="testi-footer">
+            <img src="img1.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Michelle Kim</strong>
+              <span>Supervisor in IHD LAB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            We faced a real challenge with branding. Alexa came highly recommended by major players and they exceeded
+            all our expectations.
+          </p>
+          <div class="testi-footer">
+            <img src="img2.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Sharon Branzuela</strong>
+              <span>Small Business Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            Amazing experience with Alexa! The team immediately understood my vision and turned it into a clear, modern,
+            and impactful brand identity.
+          </p>
+          <div class="testi-footer">
+            <img src="img3.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Aileen Belanueva</strong>
+              <span>Startup Team Member</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            Uptown chose Alexa to lead our rebranding project. The boost in credibility has significantly improved
+            our ability to close deals.
+          </p>
+          <div class="testi-footer">
+            <img src="img4.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Dave Jaro</strong>
+              <span>Small Business Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <p class="testi-text">
+            Working with Alexa has been an absolute pleasure. Beyond their creativity and professionalism, there’s a
+            real sense of kindness and care.
+          </p>
+          <div class="testi-footer">
+            <img src="img5.jfif" class="avatar" />
+            <div class="author-info">
+              <strong>Jéry Bendayan</strong>
+              <span>Marketing Assistant</span>
+            </div>
+          </div>
+        </div>
+
+  </section>
+  <div class="cursor" id="cursor">
+    <span> <- DRAG -></span>
+  </div>
+
+  <!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <div class="contact-header">
+      <span>[ SERIOUSLY ]</span>
+      <h2>LET'S CUT<br>TO THE CHASE.</h2>
+
+      <!-- RUNNING CHARACTER -->
+      <model-viewer class="chase-model" src="./runner.glb" autoplay interaction-prompt="none" disable-zoom disable-pan
+        camera-controls exposure="1.2" shadow-intensity="1" camera-orbit="0deg 75deg 120%" field-of-view="25deg">
+      </model-viewer>
+    </div>
+
+    <div class="contact-actions">
+      <button class="contact-btn" id="openCalendly">
+        <i class="ri-phone-line"></i>
+        <span>BOOK A CALL</span>
+      </button>
+    </div>
+
+
+    <div id="calendlyModal" class="calendly-modal">
+      <div class="calendly-box">
+        <span id="closeCalendly">&times;</span>
+
+        <div class="calendly-inline-widget" data-url="https://calendly.com/alexabranzuelabueno/from-website-schedule"
+          style="min-width:320px;height:600px;">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="contact-email">
+      <span>OR EMAIL ME DIRECTLY</span>
+
+      <div class="email-box">
+        <i class="ri-mail-line"></i>
+        <input type="text" value="alexabranzuelabueno@gmail.com" id="emailText" readonly>
+
+        <button id="copyBtn">COPY</button>
+      </div>
+
+      <p id="copyMsg">Email copied to clipboard!</p>
+    </div>
+
+    <div class="copyright">
+      © 2026 Alexa Bueno. All rights reserved.
+    </div>
+
+  </section>
   <script src="script.js"></script>
+
+<div id="projectModal" class="project-modal">
+  <div class="project-box">
+    <span id="closeProject">&times;</span>
+
+    <div id="galleryMode">
+      <div class="gallery-main">
+        <button class="gallery-arrow gallery-prev" id="galleryPrev">&#10094;</button>
+        <img id="projectPreview" src="">
+        <button class="gallery-arrow gallery-next" id="galleryNext">&#10095;</button>
+      </div>
+      <div class="gallery-counter" id="galleryCounter">1 / 3</div>
+      <div class="gallery-thumbs" id="galleryThumbs"></div>
+    </div>
+
+    <div id="detailMode" style="display:none;">
+      <div class="detail-scroll">
+        <img class="detail-cert" src="pr10.png" alt="Certificate">
+        <div class="detail-info">
+          <div class="detail-row"><label>Industry</label><span>Multiple Industry</span></div>
+          <div class="detail-row"><label>Role</label><span>Canva Graphics Design, Content Creation, Digital Marketing, SMM</span></div>
+          <div class="detail-row"><label>Year</label><span>2025</span></div>
+          <div class="detail-row"><label>Instructor</label><span>ExpertEase Education</span></div>
+          <div class="detail-context">
+            <p>Here, you'll find my samples of designs for social media content, and marketing visuals created using advanced Canva and AI techniques. Each piece showcases branding, video editing, and graphic design skills I've mastered. Explore my work and see the difference!</p>
+          </div>
+          <div class="detail-skills">
+            <h4>What I Can Do</h4>
+            <ul>
+              <li><strong>Branding & Marketing Designs:</strong> Social Media Graphics.</li>
+              <li><strong>Graphic Design:</strong> Apply color theory, typography, and layout techniques for visually striking designs.</li>
+              <li><strong>AI-Powered Content Creation:</strong> Generate images, transform sketches, and create content efficiently.</li>
+              <li><strong>Video Editing & Animations:</strong> Design engaging short-form videos, motion graphics, and promotional content.</li>
+              <li><strong>Efficient & High-Impact Designs:</strong> Refines workflows, customizes templates, and maximizes Canva's advanced features.</li>
+            </ul>
+            <p class="detail-note">Note: Due to platform limitations, the quality may appear reduced. The final product is delivered in full resolution.</p>
+          </div>
+        </div>
+        <div class="detail-samples">
+          <h4>Samples</h4>
+          <div class="sample-grid" id="sampleGrid"></div>
+        </div>
+        <div class="detail-videos">
+          <h4>Videos</h4>
+          <div class="video-grid" id="videoGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="detailModeP2" style="display:none;">
+      <div class="detail-scroll">
+        <div class="p2-top-image">
+          <img id="p2MainImage" src="p22.png" alt="Project 2 Preview">
+          <button class="p2-arrow" id="p2Arrow">&#10095;</button>
+        </div>
+        <div class="detail-info">
+          <div class="detail-row"><label>Industry</label><span>E-Learning</span></div>
+          <div class="detail-row"><label>Role</label><span>UX/UI Design</span></div>
+          <div class="detail-row"><label>Year</label><span>2021</span></div>
+          <div class="detail-row"><label>Instructor</label><span>Self-taught</span></div>
+          <p class="detail-note">Note: Due to platform limitations, the quality may appear reduced. The final product is delivered in full resolution.</p>
+        </div>
+        <div class="detail-context">
+          <h4>Problem</h4>
+          <h5>Learner's Commitment Struggles</h5>
+          <p>Learners often forget about their online courses because they are busy, resulting in incomplete courses and missed learning opportunities. This lack of commitment hinders their progress and desired upskilling outcomes.</p>
+        </div>
+        <div class="detail-context">
+          <h4>Solution</h4>
+          <img class="detail-inline-img" src="p23.png" alt="Solution">
+        </div>
+        <div class="detail-context">
+          <h4>Paper Research</h4>
+          <p>Starting with paper research, I began to draw from research articles on goals, motivation, and achievement. During my exploration, I stumbled upon an eye-opening published research, and in that research, Professor Benjamin discovered that:</p>
+          <blockquote>"If you're trying to achieve your goal, the more often you monitor your progress and physically record it, the greater the likelihood that you succeed"</blockquote>
+        </div>
+        <div class="detail-context">
+          <h4>The Main Insight</h4>
+          <p>None of the existing features in other apps worked for my participants due to....</p>
+          <img class="detail-inline-img" src="p24.png" alt="Main Insight">
+        </div>
+        <div class="detail-context">
+          <h4>Learner's Persona</h4>
+          <img class="detail-inline-img" src="p25.png" alt="Learner's Persona">
+        </div>
+        <div class="detail-context">
+          <h4>Design</h4>
+          <h5>Challenges and a Fresh Approach</h5>
+          <p>For the past 1 to 2 weeks, I have been trying to find additional solutions for this problem, including scheduling, deadlines, and notifications. However, upon careful consideration and gathering feedback, I have concluded that adding more features may bring more hassle than benefit. Despite having these existing features, they did not effectively help users discipline themselves to learn more. Therefore, I have decided to proceed with tracking learners' progress as my final solution.</p>
+        </div>
+        <div class="detail-context">
+          <h4>Testing + Improvement</h4>
+          <h5>3 Major Update in my DESIGN</h5>
+          <img class="detail-inline-img" src="p26.png" alt="Testing and Improvement">
+        </div>
+        <div class="detail-context">
+          <h4>Final Product</h4>
+          <img class="detail-inline-img" src="p27.png" alt="Final Product">
+        </div>
+        <div class="detail-context">
+          <h4>Style Guide</h4>
+          <img class="detail-inline-img" src="p28.png" alt="Style Guide">
+        </div>
+        <div class="detail-context">
+          <h4>Reflection</h4>
+          <h5>What I Would Do Differently Next Time</h5>
+          <ul>
+            <li><strong>Embrace Iteration for Optimal Results:</strong> During the initial stages, I explored numerous options to find the right solution for the users. I ended up "restarting" my project over three times, with over four iterations of my FIGMA file. This ensured that every aspect of the app was intentionally designed, refining it for the best possible outcome.</li>
+            <li><strong>Failure is a Learning Opportunity:</strong> Rather than viewing setbacks as failures, I have come to realize that they are opportunities to discover what doesn't work.</li>
+            <li><strong>Focus on the Goal:</strong> I constantly revisited my solution and checked participant statements. In the end, I reduced the length of the copy by over 30% and concentrate on the essential aspects of my project. As a result, moving forward, I am confident that placing more emphasis on the insights will enhance my storytelling skills when communicating with others.</li>
+            <li><strong>Strengthening Design Communication:</strong> In my pursuit of professional growth, I recognize the importance of honing my communication skills to effectively convey my design ideas and decision-making processes. Whether it's explaining my concepts to myself, presenting them to future recruiters, or articulating them to clients, clear and concise communication plays a vital role.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="detailModeP3" style="display:none;">
+      <div class="detail-scroll">
+        <div class="p3-header">
+          <div class="p3-header-text">
+            <h3>What is Potential?</h3>
+            <p>The Potential screen in Driz is a homepage section designed to communicate the brand’s value at a glance. It showcases the key benefits of Driz detergent, giving users a clear understanding of what the product offers and why it stands out before they explore further or make a purchase.</p>
+          </div>
+          <div class="p3-header-img">
+            <img src="P31.png" alt="P31">
+          </div>
+        </div>
+
+        <div class="p3-section">
+          <h4>Research Objective</h4>
+          <h5>Goal</h5>
+          <p>Improve the feature so it helps users easily explore products, understand their value, and feel encouraged to try or add more items (like pairing detergent with fabric conditioner).</p>
+          <h5>What we wanted to understand</h5>
+          <ul>
+            <li><strong>User behavior &amp; problems</strong> — Where users get confused when choosing products; Why they hesitate to add more or try other variants</li>
+            <li><strong>Clarity of the feature</strong> — Which parts are hard to understand; If users clearly see how the feature helps them (e.g., saves money, better cleaning)</li>
+            <li><strong>Product discovery</strong> — If users notice other products in the lineup; If the feature helps them consider alternatives or combinations</li>
+            <li><strong>Motivation to buy more</strong> — What makes users want to upgrade or add items; What stops them from doing it</li>
+          </ul>
+        </div>
+
+        <div class="p3-section">
+          <h4>Approach: Survey</h4>
+          <h5>Why this method?</h5>
+          <ul>
+            <li><strong>Identify the most important problems</strong> — The survey helps us understand what customers struggle with when choosing and using Driz products (like liquid detergent, powder, pods, and fabric conditioner). It shows which problems matter the most so we know what to fix first.</li>
+            <li><strong>Check if the feature is easy to understand and useful</strong> — We can measure if people clearly understand the feature, find it helpful, and feel satisfied when using it. This helps us see if the design is working or needs improvement.</li>
+            <li><strong>See if it encourages customers to get more products</strong> — The survey helps us find out if the feature makes people want to try other Driz products or add more items (like pairing detergent with fabric conditioner).</li>
+            <li><strong>Get results quickly for decision-making</strong> — This method allows us to collect feedback fast, so the team can improve the feature and plan the next steps without delay.</li>
+          </ul>
+        </div>
+
+        <div class="p3-section">
+          <h4>Survey Logistics</h4>
+          <p><strong>Timeline:</strong> ~4 weeks</p>
+          <ul>
+            <li>5 days for scoping and approval</li>
+            <li>4 days for fielding</li>
+            <li>7 days for analysis &amp; building the report</li>
+            <li>1 day to present</li>
+          </ul>
+          <p><strong>Tool:</strong> Conducted through Qualtrics.</p>
+        </div>
+
+        <div class="p3-section">
+          <h4>Analyzing Feedback</h4>
+          <p>I exported the open-ended comments into Google Sheets, manually coded them, removed any sensitive identifying information, and then used AI to review the open-ends to ensure no key themes were overlooked (AI peer debriefing).</p>
+        </div>
+
+        <img class="p3-inline-img" src="P32.png" alt="P32">
+        <img class="p3-inline-img" src="P33.png" alt="P33">
+        <img class="p3-inline-img" src="P34.png" alt="P34">
+
+        <div class="p3-section">
+          <h4>Final Prototype</h4>
+          <div class="figma-embed-container">
+            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="600" src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fd1gvhgF6SXXnw515IoNyyh%2FPortfolio%3Fnode-id%3D110-2%26p%3Df%26t%3D5Cja14g1XnRI3ybP-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26page-id%3D109%253A9%26starting-point-node-id%3D110%253A2" allowfullscreen=""></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 </body>
+
 </html>
+
