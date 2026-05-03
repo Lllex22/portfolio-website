@@ -585,7 +585,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentGalleryIndex = 0;
 
   const project1Samples = ["pr1.jpg","pr2.jpg","pr3.jpg","pr4.jpg","pr5.jpg","pr6.jpg","pr7.jpg","pr9.jpg"];
-  const project1Videos = ["v1.mp4","v2.mp4","v3.mp4"];
+const project1Videos = ["v1.mp4","v2.mp4"];
 
   function renderThumbs() {
     galleryThumbs.innerHTML = "";
@@ -696,7 +696,22 @@ document.addEventListener("DOMContentLoaded", () => {
     updateGallery();
   });
 
-  function closeProjectModal() {
+  galleryBack.addEventListener("click", (e) => {
+    e.stopPropagation();
+    goBackToDetail();
+  });
+
+function goBackToDetail() {
+    galleryMode.style.display = "none";
+    detailMode.style.display = "block";
+  }
+
+function closeProjectModal() {
+    // Stop all videos
+    document.querySelectorAll('.video-grid video').forEach(video => {
+      video.pause();
+      video.currentTime = 0;
+    });
     projectModal.classList.remove("show");
     document.body.classList.remove("modal-open");
     setTimeout(() => {
