@@ -2489,57 +2489,107 @@ body {
     transform: none;
   }
 
-  /* ===== RESPONSIVE FIXES (no desktop redesign) ===== */
-
-  /* HERO: keep centered on smaller screens */
+  /* Half-screen hero centering (Alexa Bueno only) */
   .brand.hero {
-    left: 50%;
-    transform: translate(-50%, 0) scale(1.2);
-    top: 56px;
-    filter: blur(0px);
+    top: 25%;
+    left: 60%;
+    transform: translate(-50%, -50%) scale(1.6);
   }
 
-  /* ABOUT: prevent navbar overlap by shifting image right */
+  /* ===== HALF-SCREEN ABOUT FIXES (do not affect desktop) ===== */
+  .chase-model {
+    /* responsive: move runner to avoid cramped header */
+    right: 10px;
+    top: 65%;
+    transform: translateY(-50%) translateX(1%) scale(0.95);
+  }
+
+  .about {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+
+
   .about-container {
-    gap: 60px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-content {
+    position: relative;
+    z-index: 25;
+
+    /* avoids vertical compression so the text doesn't crowd */
+    height: auto;
+    min-height: 0;
+
+    padding-top: 22px;
+
+    /* slightly constrain width so text wraps nicely */
+    max-width: 500px;
+  }
+
+  .about-title {
+    /* move title downward only in half-screen layout */
+    margin-top: 23px;
+  }
+
+
+  .about-text {
+    /* reduce description width slightly so full text remains visible */
+    max-width: 440px;
+    margin-top: 22px;
+
+    /* prevent any toolbox overlap risk */
+    position: relative;
+    z-index: 55;
+    padding-right: 12px;
+  }
+
+  /* Move the CTA lower so it sits closer to the bottom of the image */
+  .about-cta {
+    margin-top: 30px;
+
+    z-index: 60;
+    position: relative;
+
+    /* small separation from toolbox strip */
+    margin-bottom: 8px;
+  }
+
+  /* Image: nudge to the right + adjust crop behavior */
+  .about-image {
+    /* helps the image breathe in half-screen */
+    padding-left: 10px;
+    position: relative;
+    z-index: 20;
   }
 
   .about-photo {
-    width: 120%;
-    max-width: 560px;
-    height: auto;
-    min-height: 380px;
-    object-fit: cover;
-    margin-left: 18px;
+    /* move image RIGHT to clear the navbar */
+    transform: translateX(20px) translateY(100px);
+
+    /* show the CENTER area (avoid only-right-side visibility) */
+    object-position: 50% center;
+
+    /* avoid overly tight crop */
+    height: 460px;
+
+    width: 100%;
+    max-width: 585px;
   }
 
-  /* ABOUT DESCRIPTION: prevent overflow */
-  .about-text {
-    font-size: 15px;
-    line-height: 1.75;
-    max-width: 520px;
-    margin-top: 22px;
-    word-wrap: break-word;
-    overflow-wrap: anywhere;
+  /* Toolbox: ensure it doesn't cover description/cta */
+  .toolbox {
+    margin-top: 18px;
+    z-index: 10;
+    position: relative;
   }
 
-  /* CHESS: queen shifts slightly LEFT only */
+  /* Queen: move slightly left (half-screen only) */
   .c2 {
-    left: 46%;
-    transform: translate(-50%, -50%) scale(1.15);
-  }
-
-  /* TESTIMONIALS: reduce card size */
-  .testi-card {
-    width: 420px;
-    min-height: 280px;
-    padding: 34px;
-    border-radius: 26px;
-  }
-
-  .testi-text {
-    font-size: 14px;
-    line-height: 1.65;
+    left: 45.8%;
+    transform: translate(-50%, -50%) scale(1.2);
   }
 }
 
@@ -2550,64 +2600,31 @@ body {
     width: 100%;
   }
 
-  /* ===== RESPONSIVE FIXES (mobile) ===== */
-
-  /* HERO: always centered, prevent side shifting */
-  .brand.hero {
-    left: 50%;
-    transform: translate(-50%, 0) scale(0.95);
-    top: 42px;
-  }
-
-  /* ABOUT: move image further right + slightly larger */
+  /* extra breathing room for very narrow screens */
   .about-container {
-    grid-template-columns: 1fr;
     gap: 26px;
-    align-items: start;
   }
 
-  .about-image {
-    justify-content: center;
+  .about-content {
+    max-width: 92vw;
+  }
+
+  .about-text {
+    max-width: 86vw;
+  }
+
+  .about-cta {
+    margin-top: 60px;
   }
 
   .about-photo {
-    margin-left: 34px;
-    width: 126%;
-    max-width: 620px;
-    min-height: 320px;
+    transform: translateX(10px);
+    object-position: 80% center;
+    height: 420px;
   }
 
-  /* ABOUT DESCRIPTION TEXT: stay inside toolbox/container */
-  .about-text {
-    font-size: 14px;
-    max-width: 92vw;
-    margin-top: 16px;
-  }
-
-  /* CHESS: queen only, move LEFT a bit more */
   .c2 {
-    left: 42%;
-    transform: translate(-50%, -50%) scale(1.05);
-  }
-
-  /* TESTIMONIALS: reduce further + avoid edge touching */
-  .testi-card {
-    width: 320px;
-    min-height: 260px;
-    padding: 26px;
-    border-radius: 22px;
-  }
-
-  .testi-track {
-    gap: 24px;
-  }
-
-  /* CONTACT: move runner RIGHT so it appears after the period */
-  .chase-model {
-    right: 8px;
-    top: 64%;
-    transform: translateY(-50%);
-    width: 90px;
+    left: 47%;
   }
 }
 
