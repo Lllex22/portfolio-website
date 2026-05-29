@@ -2488,6 +2488,59 @@ body {
     bottom: auto;
     transform: none;
   }
+
+  /* ===== RESPONSIVE FIXES (no desktop redesign) ===== */
+
+  /* HERO: keep centered on smaller screens */
+  .brand.hero {
+    left: 50%;
+    transform: translate(-50%, 0) scale(1.2);
+    top: 56px;
+    filter: blur(0px);
+  }
+
+  /* ABOUT: prevent navbar overlap by shifting image right */
+  .about-container {
+    gap: 60px;
+  }
+
+  .about-photo {
+    width: 120%;
+    max-width: 560px;
+    height: auto;
+    min-height: 380px;
+    object-fit: cover;
+    margin-left: 18px;
+  }
+
+  /* ABOUT DESCRIPTION: prevent overflow */
+  .about-text {
+    font-size: 15px;
+    line-height: 1.75;
+    max-width: 520px;
+    margin-top: 22px;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  /* CHESS: queen shifts slightly LEFT only */
+  .c2 {
+    left: 46%;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+
+  /* TESTIMONIALS: reduce card size */
+  .testi-card {
+    width: 420px;
+    min-height: 280px;
+    padding: 34px;
+    border-radius: 26px;
+  }
+
+  .testi-text {
+    font-size: 14px;
+    line-height: 1.65;
+  }
 }
 
 @media (max-width: 600px) {
@@ -2496,4 +2549,65 @@ body {
   .project-card:nth-child(3) {
     width: 100%;
   }
+
+  /* ===== RESPONSIVE FIXES (mobile) ===== */
+
+  /* HERO: always centered, prevent side shifting */
+  .brand.hero {
+    left: 50%;
+    transform: translate(-50%, 0) scale(0.95);
+    top: 42px;
+  }
+
+  /* ABOUT: move image further right + slightly larger */
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    align-items: start;
+  }
+
+  .about-image {
+    justify-content: center;
+  }
+
+  .about-photo {
+    margin-left: 34px;
+    width: 126%;
+    max-width: 620px;
+    min-height: 320px;
+  }
+
+  /* ABOUT DESCRIPTION TEXT: stay inside toolbox/container */
+  .about-text {
+    font-size: 14px;
+    max-width: 92vw;
+    margin-top: 16px;
+  }
+
+  /* CHESS: queen only, move LEFT a bit more */
+  .c2 {
+    left: 42%;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  /* TESTIMONIALS: reduce further + avoid edge touching */
+  .testi-card {
+    width: 320px;
+    min-height: 260px;
+    padding: 26px;
+    border-radius: 22px;
+  }
+
+  .testi-track {
+    gap: 24px;
+  }
+
+  /* CONTACT: move runner RIGHT so it appears after the period */
+  .chase-model {
+    right: 8px;
+    top: 64%;
+    transform: translateY(-50%);
+    width: 90px;
+  }
 }
+
