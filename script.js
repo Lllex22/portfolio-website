@@ -667,10 +667,16 @@ const project1Videos = ["v1.mp4","v2.mp4"];
     detailMode.style.display = "none";
     currentGalleryImages = images;
     currentGalleryIndex = 0;
+
+    // Single-image mode (Graphic Design sample previews)
+    const isSingleImage = images.length === 1;
+    projectModal.classList.toggle("single-image-gallery", isSingleImage);
+
     updateGallery();
     projectModal.classList.add("show");
     document.body.classList.add("modal-open");
   }
+
 
   function openDetailMode() {
     galleryMode.style.display = "none";
@@ -872,13 +878,15 @@ function goBackToDetail() {
   }
 
 
-function closeProjectModal() {
+  function closeProjectModal() {
     // Stop all videos
     document.querySelectorAll('.video-grid video').forEach(video => {
       video.pause();
       video.currentTime = 0;
     });
     projectModal.classList.remove("show");
+    projectModal.classList.remove("single-image-gallery");
+
     document.body.classList.remove("modal-open");
     setTimeout(() => {
       galleryMode.style.display = "block";

@@ -2080,6 +2080,17 @@ body {
   transform: translateY(-2px);
 }
 
+/* Single-image mode (Graphic Design sample preview): hide gallery controls */
+.project-modal.single-image-gallery .gallery-main .gallery-arrow {
+  display: none;
+}
+.project-modal.single-image-gallery #galleryCounter {
+  display: none;
+}
+.project-modal.single-image-gallery #galleryThumbs {
+  display: none;
+}
+
 #closeProject,
 .gallery-back {
   position: fixed;
@@ -2087,6 +2098,7 @@ body {
   right: 30px;
   width: 48px;
   height: 48px;
+
   border-radius: 50%;
   background: rgba(255,255,255,0.85);
   backdrop-filter: blur(20px);
@@ -2785,10 +2797,10 @@ body {
     display: none !important;
   }
 
-  /* MOBILE CHANGE #5: center brand name above service pills */
+  /* MOBILE CHANGE #1 (updated): Move Alexa Bueno slightly lower, keep centered */
   .brand.hero {
     left: 50%;
-    top: 24px;
+    top: 34px;
     transform: translate(-50%, 0) scale(1.25);
     text-align: center;
   }
@@ -2817,6 +2829,21 @@ body {
     line-height: 1.65;
     max-width: 92vw;
     padding: 0 18px;
+    /* Ensure CTA has its own safe space below */
+    position: absolute;
+    z-index: 10;
+  }
+
+  /* MOBILE CHANGE #2 (fix overlap): place CTA below the full description */
+  .cta {
+    bottom: auto;
+    top: 67%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 6px 0;
   }
 
   .availability {
@@ -2824,7 +2851,85 @@ body {
     left: 18px;
     font-size: 13px;
   }
+
+  /* ===== ABOUT (MOBILE) RESTRUCTURE ===== */
+
+  /* stack everything vertically */
+  .about-container {
+    grid-template-columns: 1fr !important;
+    gap: 22px;
+    align-items: start;
+  }
+
+  /* order: Photo -> Alexa Bueno -> About Description -> Work With Alexa */
+  .about-image {
+    order: 1;
+  }
+
+  .about-content {
+    order: 2;
+    height: auto;
+    padding-top: 0;
+    max-width: 100%;
+  }
+
+  .about-title {
+    order: 2;
+    font-size: 42px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .about-text {
+    order: 3;
+    margin-top: 18px;
+    max-width: 92vw;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .about-cta {
+    order: 4;
+    margin-top: 24px;
+    margin-bottom: 6px;
+    align-self: center;
+  }
+
+  /* photo: make it more landscape-ish and more present */
+  .about-photo {
+    transform: none;
+    object-position: 50% center;
+    width: 100%;
+    max-width: 100%;
+    height: 260px;
+    border-radius: 14px;
+    margin: 0 auto;
+  }
+
+  /* Ensure about section spacing prevents overlaps */
+  .about {
+    padding-top: 90px;
+    margin-top: -120px;
+    overflow: visible;
+  }
+
+  .about-image {
+    padding-top: 10px;
+  }
+
+  /* ===== MOBILE UPDATE #6: hide certificate/chess area ===== */
+  .about-art,
+  .chess-wrap,
+  .certificate-btn {
+    display: none !important;
+  }
+
+  /* ===== MOBILE UPDATE #8: hide running 3D model (contact) ===== */
+  .chase-model {
+    display: none !important;
+  }
 }
+
 
 
 
