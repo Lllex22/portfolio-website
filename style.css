@@ -310,9 +310,14 @@ body::before {
 }
 
 /* ===== SKILLS (ELEGANT PILLS) ===== */
+.hero-services-spacer {
+  height: 28px;
+}
+
 .skills {
   position: absolute;
   top: 42%;
+
   left: 50%;
   transform: translateX(-50%);
 
@@ -749,7 +754,11 @@ body::before {
 .projects {
   display: grid !important;
   grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-rows: auto auto !important;
+  grid-auto-flow: row !important;
+  align-items: start;
 }
+
 
 /* prevent stretch bug */
 .project-card {
@@ -760,12 +769,13 @@ body::before {
 /* floating cards */
 .project-card {
   height: 260px;
-  perspective: 1000px;
+  perspective: none;
 
   opacity: 0;
   transform: translateY(80px);
   transition: all 1s cubic-bezier(.22, 1, .36, 1);
 }
+
 
 /* reveal */
 .project-card.show {
@@ -794,18 +804,19 @@ body::before {
 
   transition: all 0.6s cubic-bezier(.22, 1, .36, 1);
 
-  /* floating effect */
-  transform: rotateX(4deg) rotateY(-4deg);
+/* floating effect */
+  transform: none;
 }
 
-/* ✨ hover lift + straighten */
+/* ✨ hover lift + premium subtle glow */
 .project-card:hover .project-inner {
-  transform: rotateX(0deg) rotateY(0deg) scale(1.03);
-
+  transform: none;
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.12),
-    0 10px 30px rgba(0, 0, 0, 0.08);
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 0 40px rgba(255, 255, 255, 0.55);
 }
+
 
 /* text */
 .project-inner h2 {
@@ -818,15 +829,16 @@ body::before {
   color: #666;
 }
 
-.project-card:nth-child(2) {
-  top: 130%;
-  right: 0;
-  transform: translateY(-50%);
-}
+/* Layout correction: remove nth-child positional overrides that caused overlap */
+.project-card:nth-child(2),
 .project-card:nth-child(3) {
-  bottom: 0;
-  left: 0;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  transform: none;
 }
+
 
 /* ===== MODEL ===== */
 .model-container {
@@ -1127,35 +1139,44 @@ section {
 
 /* 🌸 SOFT PASTEL COLORS */
 
-/* PR */
-.tool.pr { background: #e6ddff; }
-.tool.pr .tool-inner { background: linear-gradient(135deg, #f3efff, #e6ddff); }
-.tool.pr .tool-inner::before { background: #d6c8ff; }
+/* CAPCUT */
+.tool.capcut { background: #eafff6; }
+.tool.capcut .tool-inner { background: linear-gradient(135deg, #f1fff9, #eafff6); }
+.tool.capcut .tool-inner::before { background: #bff5df; }
 
-/* PS */
-.tool.ps { background: #d9ecff; }
-.tool.ps .tool-inner { background: linear-gradient(135deg, #eef7ff, #d9ecff); }
-.tool.ps .tool-inner::before { background: #c6e0ff; }
+/* CANVA */
+.tool.canva { background: #e8f0ff; }
+.tool.canva .tool-inner { background: linear-gradient(135deg, #f2f7ff, #e8f0ff); }
+.tool.canva .tool-inner::before { background: #b9d3ff; }
 
 /* AI */
 .tool.ai { background: #ffe7d6; }
 .tool.ai .tool-inner { background: linear-gradient(135deg, #fff3ea, #ffe7d6); }
 .tool.ai .tool-inner::before { background: #ffd3b3; }
 
-/* AE */
-.tool.ae { background: #efe5ff; }
-.tool.ae .tool-inner { background: linear-gradient(135deg, #f7f2ff, #efe5ff); }
-.tool.ae .tool-inner::before { background: #e0ccff; }
-
 /* FIGMA */
 .tool.figma { background: #ffdbe6; }
 .tool.figma .tool-inner { background: linear-gradient(135deg, #fff0f5, #ffdbe6); }
 .tool.figma .tool-inner::before { background: #ffbfd1; }
 
-/* WEB */
-.tool.web { background: #dff5ea; }
-.tool.web .tool-inner { background: linear-gradient(135deg, #f1fbf6, #dff5ea); }
-.tool.web .tool-inner::before { background: #c6ecd9; }
+/* GOOGLE WORKSPACE */
+.tool.google-workspace { background: #fff3da; }
+.tool.google-workspace .tool-inner { background: linear-gradient(135deg, #fff8e8, #fff3da); }
+.tool.google-workspace .tool-inner::before { background: #ffe2a3; }
+
+/* Fit long label into the Google Workspace tile */
+.tool.google-workspace .tool-inner span {
+  font-size: clamp(10px, 1.35vw, 12.5px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* TRELLO */
+.tool.trello { background: #e5f1ff; }
+.tool.trello .tool-inner { background: linear-gradient(135deg, #eff8ff, #e5f1ff); }
+.tool.trello .tool-inner::before { background: #bcdcff; }
+
 @keyframes scrollTools {
   from {
     transform: translateX(0);
@@ -2127,12 +2148,16 @@ body {
 
 .detail-cert {
   width: 100%;
-  max-width: 380px;
+  height: 260px;
+  max-width: 100%;
   margin: 0 auto 24px;
   display: block;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  object-fit: cover;
+  object-position: center;
 }
+
 
 .detail-info {
   margin-bottom: 28px;
@@ -2163,6 +2188,107 @@ body {
   font-size: 14px;
 }
 
+/* ===== ACCORDION (Virtual Assistant view) ===== */
+.accordion {
+  width: 100%;
+}
+
+.accordion-item {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.7);
+  margin-bottom: 10px;
+}
+
+.accordion-btn {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accordion-btn::after {
+  content: "＋";
+  font-size: 18px;
+  color: #FF5C8D;
+}
+
+.accordion-item.open .accordion-btn::after {
+  content: "－";
+}
+
+
+.accordion-panel {
+  /* Add breathing room inside expanded accordion content */
+  padding: 18px 28px 22px;
+  margin: 0;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 0.45s cubic-bezier(.22,1,.36,1),
+    opacity 0.25s ease;
+}
+
+/* Virtual Assistant accordion content spacing + scan-friendly layout */
+#detailModeP4 .accordion-panel {
+  width: 100%;
+}
+
+/* Certificate: ensure full image stays visible (no cropping) and scales down responsively */
+#detailModeP4 .accordion-panel img[alt="HIPA.jfif"] {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  margin: 6px 0 20px;
+}
+
+@media (max-width: 600px) {
+  #detailModeP4 .accordion-panel {
+    padding: 14px 18px 18px;
+  }
+}
+
+
+#detailModeP4 .accordion-panel h4 {
+  font-size: 15px;
+  margin: 22px 0 10px;
+  color: #111;
+  font-weight: 600;
+}
+
+#detailModeP4 .accordion-panel h4:first-of-type {
+  margin-top: 0;
+}
+
+#detailModeP4 .accordion-panel ul {
+  margin: 0 0 18px;
+  padding-left: 20px;
+}
+
+#detailModeP4 .accordion-panel li {
+  margin-bottom: 6px;
+}
+
+
+.accordion-item.open .accordion-panel {
+  opacity: 1;
+}
+
+
+
 .detail-skills h4,
 .detail-samples h4,
 .detail-videos h4 {
@@ -2192,11 +2318,35 @@ body {
   margin-top: 8px;
 }
 
+.sample-category {
+  margin-bottom: 26px;
+}
+
+.sample-category-title {
+  font-size: 15px;
+  margin: 0 0 12px;
+  color: #111;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.sample-category-title::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 10px;
+  background: #FF5C8D;
+  box-shadow: 0 8px 20px rgba(255, 92, 141, 0.25);
+  transform: translateY(1px);
+}
+
 .sample-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .sample-grid img {
@@ -2594,6 +2744,7 @@ body {
 }
 
 @media (max-width: 600px) {
+  /* PROJECT SECTION */
   .project-card,
   .project-card:nth-child(2),
   .project-card:nth-child(3) {
@@ -2626,5 +2777,54 @@ body {
   .c2 {
     left: 47%;
   }
+
+  /* ===== MOBILE ONLY FIXES (do not affect tablet/desktop) ===== */
+
+  /* MOBILE CHANGE #1: hide side navigation completely */
+  .side-nav {
+    display: none !important;
+  }
+
+  /* MOBILE CHANGE #5: center brand name above service pills */
+  .brand.hero {
+    left: 50%;
+    top: 24px;
+    transform: translate(-50%, 0) scale(1.25);
+    text-align: center;
+  }
+
+  /* MOBILE CHANGE #4: service pills spacing + sizing to prevent crowding/overlap */
+  .skills {
+    top: 32%;
+    gap: 10px;
+    padding: 0 14px;
+    flex-wrap: wrap;
+    max-width: 92vw;
+    justify-content: center;
+  }
+
+  .pill {
+    padding: 7px 12px;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+  }
+
+  /* MOBILE CHANGE #6: improve text readability */
+  .tagline {
+    top: 56%;
+    font-size: 16px;
+    line-height: 1.65;
+    max-width: 92vw;
+    padding: 0 18px;
+  }
+
+  .availability {
+    top: 32px;
+    left: 18px;
+    font-size: 13px;
+  }
 }
+
+
 

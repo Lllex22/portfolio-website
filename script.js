@@ -565,11 +565,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const project1Card = document.querySelector(".project-card[data-project='project1']");
   const project2Card = document.querySelector(".project-card[data-project='project2']");
   const project3Card = document.querySelector(".project-card[data-project='project3']");
+  const project4Card = document.querySelector(".project-card[data-project='project4']");
   const projectModal = document.getElementById("projectModal");
   const galleryMode = document.getElementById("galleryMode");
   const detailMode = document.getElementById("detailMode");
   const detailModeP2 = document.getElementById("detailModeP2");
   const detailModeP3 = document.getElementById("detailModeP3");
+  const detailModeP4 = document.getElementById("detailModeP4");
   const projectPreview = document.getElementById("projectPreview");
   const closeProject = document.getElementById("closeProject");
   const galleryPrev = document.getElementById("galleryPrev");
@@ -581,11 +583,63 @@ document.addEventListener("DOMContentLoaded", () => {
   const p2MainImage = document.getElementById("p2MainImage");
   const p2Arrow = document.getElementById("p2Arrow");
 
+
   let currentGalleryImages = [];
   let currentGalleryIndex = 0;
 
-  const project1Samples = ["pr1.jpg","pr2.jpg","pr3.jpg","pr4.jpg","pr5.jpg","pr6.jpg","pr7.jpg","pr9.jpg"];
+  const project1Samples = ["pr1.jpg","pr2.jpg","pr3.jpg","pr4.png","pr5.png","pr6.jpg","pr7.jpg","pr9.jpg"]; 
 const project1Videos = ["v1.mp4","v2.mp4"];
+
+  const REAL_PREFIX = "REAL";
+  const WATER_PREFIX = "WATER";
+  const PRODUCT_PREFIX = "PRODUCT";
+
+  function getAllGraphicSampleFiles() {
+    // Preserve existing pr* samples and additionally include newer categorized assets
+    // that exist in this project folder.
+    return [
+      ...project1Samples,
+      // REAL estate marketing
+      "REAL1.png", "REAL2.png", "REAL3.png", "REAL4.png",
+      // Small business marketing
+      "WATER1.png", "WATER2.png", "WATER3.png", "WATER4.png", "WATER5.png", "WATER6.png",
+      // Product marketing
+      "PRODUCT1.png", "PRODUCT2.png", "PRODUCT3.png", "PRODUCT4.png", "PRODUCT5.png", "PRODUCT6.png", "PRODUCT7.png"
+    ];
+  }
+
+  function groupGraphicSamples(samples) {
+    const buckets = {
+      real: [],
+      water: [],
+      product: [],
+      other: []
+    };
+
+    samples.forEach((src) => {
+      const upper = src.toUpperCase();
+      if (upper.startsWith(REAL_PREFIX)) buckets.real.push(src);
+      else if (upper.startsWith(WATER_PREFIX)) buckets.water.push(src);
+      else if (upper.startsWith(PRODUCT_PREFIX)) buckets.product.push(src);
+      else buckets.other.push(src);
+    });
+
+    return buckets;
+  }
+
+  function renderSampleGrid(gridEl, images) {
+    gridEl.innerHTML = "";
+    images.forEach((src) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openGalleryMode([src]);
+      });
+      gridEl.appendChild(img);
+    });
+  }
+
 
   function renderThumbs() {
     galleryThumbs.innerHTML = "";
@@ -622,17 +676,37 @@ const project1Videos = ["v1.mp4","v2.mp4"];
     galleryMode.style.display = "none";
     detailMode.style.display = "block";
 
-    sampleGrid.innerHTML = "";
-    project1Samples.forEach(src => {
-      const img = document.createElement("img");
-      img.src = src;
-      img.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openGalleryMode([src]);
-      });
-      sampleGrid.appendChild(img);
-    });
+    // New categorized sample grids (ordered: REAL -> WATER -> PRODUCT -> Other)
+    const buckets = groupGraphicSamples(getAllGraphicSampleFiles());
 
+    const realGrid = document.getElementById("sampleGridReal");
+    const waterGrid = document.getElementById("sampleGridWater");
+    const productGrid = document.getElementById("sampleGridProduct");
+    const otherGrid = document.getElementById("sampleGridOther");
+
+    // Fallback (in case DOM IDs changed)
+    if (!realGrid || !waterGrid || !productGrid || !otherGrid) {
+      // keep old behavior
+      if (sampleGrid) {
+        sampleGrid.innerHTML = "";
+        project1Samples.forEach(src => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.addEventListener("click", (e) => {
+            e.stopPropagation();
+            openGalleryMode([src]);
+          });
+          sampleGrid.appendChild(img);
+        });
+      }
+    } else {
+      renderSampleGrid(realGrid, buckets.real);
+      renderSampleGrid(waterGrid, buckets.water);
+      renderSampleGrid(productGrid, buckets.product);
+      renderSampleGrid(otherGrid, buckets.other);
+    }
+
+    // Videos unchanged
     videoGrid.innerHTML = "";
     project1Videos.forEach(src => {
       const video = document.createElement("video");
@@ -671,10 +745,25 @@ const project1Videos = ["v1.mp4","v2.mp4"];
       detailMode.style.display = "none";
       detailModeP2.style.display = "none";
       detailModeP3.style.display = "block";
+      if (detailModeP4) detailModeP4.style.display = "none";
       projectModal.classList.add("show");
       document.body.classList.add("modal-open");
     });
   }
+
+  if (project4Card) {
+    project4Card.style.cursor = "pointer";
+    project4Card.addEventListener("click", () => {
+      galleryMode.style.display = "none";
+      detailMode.style.display = "none";
+      detailModeP2.style.display = "none";
+      detailModeP3.style.display = "none";
+      if (detailModeP4) detailModeP4.style.display = "block";
+      projectModal.classList.add("show");
+      document.body.classList.add("modal-open");
+    });
+  }
+
 
   if (p2Arrow && p2MainImage) {
     p2Arrow.addEventListener("click", (e) => {
@@ -701,10 +790,87 @@ const project1Videos = ["v1.mp4","v2.mp4"];
     goBackToDetail();
   });
 
+  // Accordion behavior (used by VA detail view)
+  document.querySelectorAll('.accordion').forEach((accordionEl) => {
+    const items = accordionEl.querySelectorAll('.accordion-item');
+
+    // start fully collapsed (all panels closed, no aria-expanded mismatch)
+    items.forEach((item) => {
+      const btn = item.querySelector('.accordion-btn');
+      const panel = item.querySelector('.accordion-panel');
+      item.classList.remove('open');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      if (panel) {
+        panel.hidden = true;
+        panel.style.maxHeight = '0px';
+        panel.style.opacity = '0';
+      }
+    });
+
+    accordionEl.querySelectorAll('.accordion-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        const accordionItem = btn.closest('.accordion-item');
+        const panelId = btn.getAttribute('data-accordion');
+        const panel = accordionEl.querySelector(`.accordion-panel[data-accordion-panel="${panelId}"]`);
+        if (!accordionItem || !panel) return;
+
+        const isOpen = accordionItem.classList.contains('open');
+
+        // close all siblings first (single-open behavior)
+        const allItems = accordionEl.querySelectorAll('.accordion-item');
+        allItems.forEach((item) => {
+          if (item !== accordionItem) {
+            item.classList.remove('open');
+            const otherBtn = item.querySelector('.accordion-btn');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+
+            const otherPanel = item.querySelector('.accordion-panel');
+            if (otherPanel) {
+              otherPanel.style.maxHeight = '0px';
+              otherPanel.style.opacity = '0';
+              window.setTimeout(() => {
+                otherPanel.hidden = true;
+              }, 450);
+            }
+          }
+        });
+
+        if (isOpen) {
+          accordionItem.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+
+          panel.style.maxHeight = '0px';
+          panel.style.opacity = '0';
+          window.setTimeout(() => {
+            panel.hidden = true;
+          }, 450);
+        } else {
+          accordionItem.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+
+          // open with smooth downward animation
+          panel.hidden = false;
+          const targetHeight = panel.scrollHeight;
+          panel.style.maxHeight = targetHeight + 'px';
+          panel.style.opacity = '1';
+
+          // allow growth if content wraps/reflows after open
+          window.setTimeout(() => {
+            panel.style.maxHeight = 'none';
+          }, 460);
+        }
+      });
+    });
+  });
+
+
 function goBackToDetail() {
     galleryMode.style.display = "none";
     detailMode.style.display = "block";
   }
+
 
 function closeProjectModal() {
     // Stop all videos
@@ -719,8 +885,10 @@ function closeProjectModal() {
       detailMode.style.display = "none";
       detailModeP2.style.display = "none";
       detailModeP3.style.display = "none";
+      if (detailModeP4) detailModeP4.style.display = "none";
     }, 400);
   }
+
 
   closeProject.addEventListener("click", closeProjectModal);
 
