@@ -19,96 +19,108 @@
 <body>
 
   <div class="hero-wrap">
-    <div class="brand" id="brand">Alexa Bueno</div>
+    <div class="brand" id="brand">ALEXA BUENO</div>
 
-    <div class="hero-services-spacer" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <img class="choose-your" src="Choose Your.png" alt="Choose Your" />
 
-    <div class="skills" id="skills">
+      <div class="tagline" id="tagline">
+        Pick the version of me that fits what your business needs right now.
 
-      <div class="pill">UX/UI Designer</div>
-      <div class="pill">Graphic Designer</div>
-      <div class="pill">Virtual Assistant</div>
-    </div>
-
-    <div class="tagline" id="tagline">
-I help businesses create professional websites, clear visual identities, 
-and organized workflows so they can focus on growing their business.    </div>
-
-
-    <div class="cta" id="cta">Check my other projects</div>
-  </div>
-
-  <!-- PROGRESS -->
-  <div class="progress" id="progress">
-    <div class="bar" id="bar"></div>
-  </div>
-
-  <div class="availability">
-    <span>Available</span>
-    <span>for work</span>
-  </div>
-
-  <div class="book-call">
-    <i class="ri-phone-line"></i>
-  </div>
-
-  <div class="side-nav">
-    <div class="nav-item active" data-label="Home">
-      <i class="ri-home-4-line"></i>
-    </div>
-    <div class="nav-item" data-label="Projects">
-      <i class="ri-folder-3-line"></i>
-    </div>
-    <div class="nav-item" data-label="About">
-      <i class="ri-user-3-line"></i>
-    </div>
-    <div class="nav-item" data-label="Contact">
-      <i class="ri-mail-line"></i>
-    </div>
-  </div>
-
-  <div class="scroll-indicator">
-    <div class="scroll-track"></div>
-    <div class="scroll-thumb" id="scrollThumb"></div>
-  </div>
-
-  <!-- MODEL -->
-  <div class="model-container" id="modelSection">
-    <model-viewer id="viewer" src="./model.glb" autoplay camera-controls disable-pan disable-zoom
-      interaction-prompt="none" touch-action="pan-y" shadow-intensity="0" exposure="1.2" camera-orbit="30deg 75deg 200%"
-      field-of-view="30deg">
-    </model-viewer>
-  </div>
-
-  <!-- PROJECTS -->
-  <section class="projects">
-
-    <div class="project-card" data-project="project1">
-
-      <div class="project-inner">
-        <img src="project1.png" class="project-img">
       </div>
-    </div>
 
-    <div class="project-card" data-project="project2">
-      <div class="project-inner">
-        <img src="Project2.png" class="project-img">
+
+      <div class="role-cards" id="roleCards" aria-label="Choose your role">
+        <!-- UX/UI Designer card -->
+        <div class="role-card role-card--uxui" role="group" aria-label="UX/UI Designer">
+          <img class="role-card-image" src="uxui model.png" alt="UX/UI model" />
+          <div class="role-badge" aria-hidden="true">UX/UI Designer</div>
+
+          <div class="floating-badges" aria-hidden="true">
+            <div class="float-pill float-pill--1 float-pill--uxui">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-focus-2-line"></i></span>
+              <span class="pill-text">Research</span>
+            </div>
+            <div class="float-pill float-pill--2 float-pill--uxui">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-window-2-line"></i></span>
+              <span class="pill-text">Wireframe</span>
+            </div>
+            <div class="float-pill float-pill--3 float-pill--uxui">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-lightbulb-flash-line"></i></span>
+              <span class="pill-text">Prototype</span>
+            </div>
+            <div class="float-pill float-pill--4 float-pill--uxui">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-user-follow-line"></i></span>
+              <span class="pill-text">User-Centered</span>
+            </div>
+            <div class="float-pill float-pill--5 float-pill--uxui">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-search-eye-line"></i></span>
+              <span class="pill-text">Usability</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Assistant card -->
+        <div class="role-card role-card--ea" role="group" aria-label="Executive Assistant">
+          <img class="role-card-image" src="ea.png" alt="Executive Assistant model" />
+          <div class="role-badge" aria-hidden="true">Executive Assistant</div>
+
+          <div class="floating-badges" aria-hidden="true">
+            <div class="float-pill float-pill--1 float-pill--ea">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-calendar-2-line"></i></span>
+              <span class="pill-text">Organized</span>
+            </div>
+            <div class="float-pill float-pill--2 float-pill--ea">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-chat-1-line"></i></span>
+              <span class="pill-text">Communication</span>
+            </div>
+            <div class="float-pill float-pill--3 float-pill--ea">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-settings-3-line"></i></span>
+              <span class="pill-text">Systems</span>
+            </div>
+            <div class="float-pill float-pill--4 float-pill--ea">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-handshake-line"></i></span>
+              <span class="pill-text">Client Support</span>
+            </div>
+            <div class="float-pill float-pill--5 float-pill--ea">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-calendar-line"></i></span>
+              <span class="pill-text">Scheduling</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Graphic Designer card -->
+        <div class="role-card role-card--graphic" role="group" aria-label="Graphic Designer">
+          <img class="role-card-image" src="graphic design.png" alt="Graphic Designer model" />
+          <div class="role-badge" aria-hidden="true">Graphic Designer</div>
+
+          <div class="floating-badges" aria-hidden="true">
+            <div class="float-pill float-pill--1 float-pill--graphic">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-pen-nib-line"></i></span>
+              <span class="pill-text">Branding</span>
+            </div>
+            <div class="float-pill float-pill--2 float-pill--graphic">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-sparkling-2-line"></i></span>
+              <span class="pill-text">Creative</span>
+            </div>
+            <div class="float-pill float-pill--3 float-pill--graphic">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-target-line"></i></span>
+              <span class="pill-text">Strategic</span>
+            </div>
+            <div class="float-pill float-pill--4 float-pill--graphic">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-megaphone-line"></i></span>
+              <span class="pill-text">Impactful</span>
+            </div>
+            <div class="float-pill float-pill--5 float-pill--graphic">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-image-line"></i></span>
+              <span class="pill-text">Visual Design</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="project-card" data-project="project3">
-      <div class="project-inner">
-        <img src="project3.png" class="project-img">
-      </div>
     </div>
-
-    <div class="project-card" data-project="project4">
-      <div class="project-inner">
-        <img src="VA.jpg" class="project-img">
-      </div>
-    </div>
-
-  </section>
+  </div>
 
 
   <!-- ABOUT -->
@@ -118,7 +130,9 @@ and organized workflows so they can focus on growing their business.    </div>
 
       <!-- LEFT -->
       <div class="about-image">
-        <img src="your-image.jpg" alt="Alexa" class="about-photo" />
+        <div class="photo-frame">
+          <img src="your-image.jpg" alt="Alexa" class="about-photo" />
+        </div>
       </div>
 
       <!-- CENTER -->
@@ -126,14 +140,22 @@ and organized workflows so they can focus on growing their business.    </div>
         <h2 class="about-title">Alexa Bueno</h2>
 
         <p class="about-text">
-          Businesses don't need another person to simply complete tasks, they need someone who can take ownership,
-          solve problems, and contribute wherever support is needed. My diverse background in operations,
-          quality assurance, administration, content creation, website design, and graphic design allows
-          me to bridge gaps that would normally require multiple hires. I bring both structure and creativity,
-          helping businesses stay organized behind the scenes while also strengthening their digital presence.
-          If you're looking for someone who can adapt quickly, learn fast, think independently, and add value
-          across different areas of your business, that's exactly what I bring to the table.
+          Hire me if you need someone who takes ownership, solves problems, and adapts to whatever your business needs.
+          With experience in operations, quality assurance, administration, content creation, website design, and
+          graphic design, I can support multiple areas of your business while bringing both structure and creativity to
+          help it grow.
         </p>
+
+        <p class="based-in">--- Based in the Philippines</p>
+
+        <div class="role-divider"></div>
+
+        <p class="role-picker-tagline">Pick the version of me your business needs... or hire all three.</p>
+        <div class="role-pills">
+          <button type="button" class="role-pill role-pill--uxui">UX/UI Designer</button>
+          <button type="button" class="role-pill role-pill--ea">Executive Assistant</button>
+          <button type="button" class="role-pill role-pill--graphic">Graphic Designer</button>
+        </div>
 
         <div class="about-cta" id="aboutCta">Work with Alexa →</div>
       </div>
@@ -198,94 +220,452 @@ and organized workflows so they can focus on growing their business.    </div>
       </div>
 
       <div class="toolbox-track">
+        <img class="tool-icon" src="tool1.png" alt="Tool 1">
+        <img class="tool-icon" src="tool2.png" alt="Tool 2">
+        <img class="tool-icon" src="tool3.png" alt="Tool 3">
+        <img class="tool-icon" src="tool4.png" alt="Tool 4">
 
-        <div class="tool capcut">
-          <div class="tool-inner"><span>Capcut</span></div>
-        </div>
-        <div class="tool canva">
-          <div class="tool-inner"><span>Canva</span></div>
-        </div>
-        <div class="tool figma">
-          <div class="tool-inner"><span>Figma</span></div>
-        </div>
-        <div class="tool ai">
-          <div class="tool-inner"><span>AI</span></div>
-        </div>
-<div class="tool google-workspace">
-          <div class="tool-inner"><span>Google<br>Workspace</span></div>
-        </div>
-        <div class="tool trello">
-          <div class="tool-inner"><span>Trello</span></div>
-        </div>
+        <!-- duplicate set for seamless infinite loop -->
+        <img class="tool-icon" src="tool1.png" alt="Tool 1">
+        <img class="tool-icon" src="tool2.png" alt="Tool 2">
+        <img class="tool-icon" src="tool3.png" alt="Tool 3">
+        <img class="tool-icon" src="tool4.png" alt="Tool 4">
+      </div>
 
 
 
-        <!-- duplicate -->
-        <div class="tool capcut">
-          <div class="tool-inner"><span>Capcut</span></div>
-        </div>
-        <div class="tool canva">
-          <div class="tool-inner"><span>Canva</span></div>
-        </div>
-        <div class="tool figma">
-          <div class="tool-inner"><span>Figma</span></div>
-        </div>
-        <div class="tool ai">
-          <div class="tool-inner"><span>AI</span></div>
-        </div>
-        <div class="tool google-workspace">
-          <div class="tool-inner"><span>Google<br>Workspace</span></div>
-        </div>
-        <div class="tool trello">
-          <div class="tool-inner"><span>Trello</span></div>
-        </div>
 
-        <div class="tool capcut">
-          <div class="tool-inner"><span>Capcut</span></div>
-        </div>
-        <div class="tool canva">
-          <div class="tool-inner"><span>Canva</span></div>
-        </div>
-        <div class="tool figma">
-          <div class="tool-inner"><span>Figma</span></div>
-        </div>
-        <div class="tool ai">
-          <div class="tool-inner"><span>AI</span></div>
-        </div>
-<div class="tool google-workspace">
-          <div class="tool-inner"><span>Google<br>Workspace</span></div>
-        </div>
-        <div class="tool trello">
-          <div class="tool-inner"><span>Trello</span></div>
-        </div>
+    </div>
 
+    </div>
 
-        <div class="tool capcut">
-          <div class="tool-inner"><span>Capcut</span></div>
-        </div>
-        <div class="tool canva">
-          <div class="tool-inner"><span>Canva</span></div>
-        </div>
-        <div class="tool figma">
-          <div class="tool-inner"><span>Figma</span></div>
-        </div>
-        <div class="tool ai">
-          <div class="tool-inner"><span>AI</span></div>
-        </div>
-        <div class="tool google-workspace">
-          <div class="tool-inner"><span>Google Workspace</span></div>
-        </div>
-        <div class="tool trello">
-          <div class="tool-inner"><span>Trello</span></div>
-        </div>
+  </section>
+  <!-- PROGRESS -->
+  <div class="progress" id="progress">
+    <div class="bar" id="bar"></div>
+  </div>
 
+  <div class="availability">
+    <span>Available</span>
+    <span>for work</span>
+  </div>
 
+  <div class="book-call">
+    <i class="ri-phone-line"></i>
+  </div>
 
+  <div class="side-nav">
+    <div class="nav-item active" data-label="Home">
+      <i class="ri-home-4-line"></i>
+    </div>
+    <div class="nav-item" data-label="About">
+      <i class="ri-user-3-line"></i>
+    </div>
+    <div class="nav-item" data-label="Projects">
+      <i class="ri-folder-3-line"></i>
+    </div>
+    <div class="nav-item" data-label="Contact">
+      <i class="ri-mail-line"></i>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-track"></div>
+    <div class="scroll-thumb" id="scrollThumb"></div>
+  </div>
+
+  <!-- MODEL -->
+  <div class="model-container" id="modelSection">
+    <model-viewer id="viewer" src="./model.glb" autoplay camera-controls disable-pan disable-zoom
+      interaction-prompt="none" touch-action="pan-y" shadow-intensity="0" exposure="1.2" camera-orbit="30deg 75deg 200%"
+      field-of-view="30deg">
+    </model-viewer>
+  </div>
+
+  <!-- PROJECTS -->
+  <section class="projects">
+
+    <h2 class="projects-heading">Projects</h2>
+
+    <div class="projects-row">
+
+      <div class="project-card" data-project="project1">
+        <div class="project-inner project-inner--graphic">
+          <div class="project-illustration illustration-graphic" aria-hidden="true">
+            <span class="stage-sheet stage-sheet-a"></span>
+            <span class="stage-sheet stage-sheet-b"></span>
+            <span class="stage-line stage-line--type"></span>
+            <span class="stage-line stage-line--type-2"></span>
+            <span class="swatch-row">
+              <span class="swatch"></span>
+              <span class="swatch"></span>
+              <span class="swatch"></span>
+            </span>
+          </div>
+          <div class="project-card-text">
+            <h3 class="project-card-title">Graphic Design</h3>
+            <span class="project-card-link">View Case Study <i class="ri-arrow-right-line"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-project="project2">
+        <div class="project-inner project-inner--uxui">
+          <div class="project-illustration illustration-uxui" aria-hidden="true">
+            <span class="stage-sheet stage-sheet-a"></span>
+            <span class="grid-frame"></span>
+            <span class="stage-sheet stage-sheet-b"></span>
+            <span class="stage-dot stage-dot--ui"></span>
+            <span class="stage-line stage-line--ui-a"></span>
+            <span class="stage-line stage-line--ui-b"></span>
+          </div>
+          <div class="project-card-text">
+            <h3 class="project-card-title">UX Design</h3>
+            <span class="project-card-link">View Case Study <i class="ri-arrow-right-line"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-project="project3">
+        <div class="project-inner project-inner--research">
+          <div class="project-illustration illustration-research" aria-hidden="true">
+            <span class="stage-sheet stage-sheet-a"></span>
+            <span class="stage-sheet stage-sheet-b"></span>
+            <span class="stage-dot stage-dot--node node-a"></span>
+            <span class="stage-dot stage-dot--node node-b"></span>
+            <span class="stage-dot stage-dot--node node-c"></span>
+            <span class="node-connector connector-ab"></span>
+            <span class="node-connector connector-bc"></span>
+          </div>
+          <div class="project-card-text">
+            <h3 class="project-card-title">UX Research</h3>
+            <span class="project-card-link">View Case Study <i class="ri-arrow-right-line"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-project="project4">
+        <div class="project-inner project-inner--ea">
+          <div class="project-illustration illustration-ea" aria-hidden="true">
+            <span class="stage-sheet stage-sheet-a">
+              <span class="planner-grid">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+              </span>
+            </span>
+            <span class="stage-sheet stage-sheet-b"></span>
+            <span class="checklist">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div class="project-card-text">
+            <h3 class="project-card-title">Executive Assistant</h3>
+            <span class="project-card-link">View Case Study <i class="ri-arrow-right-line"></i></span>
+          </div>
+        </div>
       </div>
 
     </div>
 
   </section>
+
+  <!-- UX/UI DESIGNER SECTION -->
+  <section class="uxui-showcase" id="uxuiShowcase">
+    <div class="uxui-showcase-container">
+
+      <!-- LEFT: Model + Pills -->
+      <div class="uxui-showcase-visual">
+        <div class="role-card role-card--uxui uxui-showcase-card" role="group" aria-label="UX/UI Designer">
+          <img class="role-card-image" src="uxui model.png" alt="UX/UI model" />
+
+          <div class="floating-badges uxui-showcase-badges" aria-hidden="true">
+            <div class="float-pill float-pill--1 float-pill--uxui">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-focus-2-line"></i></span>
+              <span class="pill-text">Research</span>
+            </div>
+            <div class="float-pill float-pill--2 float-pill--uxui">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-window-2-line"></i></span>
+              <span class="pill-text">Wireframe</span>
+            </div>
+            <div class="float-pill float-pill--3 float-pill--uxui">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-lightbulb-flash-line"></i></span>
+              <span class="pill-text">Prototype</span>
+            </div>
+            <div class="float-pill float-pill--4 float-pill--uxui">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-user-follow-line"></i></span>
+              <span class="pill-text">User-Centered</span>
+            </div>
+            <div class="float-pill float-pill--5 float-pill--uxui">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-search-eye-line"></i></span>
+              <span class="pill-text">Usability</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Content -->
+      <div class="uxui-showcase-content">
+
+        <h2 class="uxui-showcase-title">UX/UI Designer</h2>
+        <p class="uxui-showcase-intro">
+          I design intuitive, user-centered digital experiences that are visually engaging, functional, and easy to
+          navigate.
+        </p>
+
+        <div class="uxui-info-grid">
+          <div class="uxui-info-card" tabindex="0">
+            <h3>What I Do</h3>
+            <p>Design user interfaces, wireframes, prototypes, design systems, and improve web/mobile user experiences.
+            </p>
+          </div>
+          <div class="uxui-info-card" tabindex="0">
+            <h3>My Contribution</h3>
+            <p>Transform ideas into intuitive digital experiences by balancing user needs with business goals.</p>
+          </div>
+          <div class="uxui-info-card" tabindex="0">
+            <h3>Experience</h3>
+            <p>Designed responsive websites, mobile interfaces, user flows, prototypes, and digital experiences for
+              personal and client projects.</p>
+          </div>
+          <div class="uxui-info-card" tabindex="0">
+            <h3>Approach</h3>
+            <p>Prioritize clarity, accessibility, consistency, and seamless interactions.</p>
+          </div>
+        </div>
+
+        <div class="uxui-tools">
+          <h3 class="uxui-tools-title">Tools I Use</h3>
+          <div class="uxui-tools-row">
+            <span class="uxui-tool-pill"><i class="ri-pencil-ruler-2-line"></i> Figma</span>
+            <span class="uxui-tool-pill"><i class="ri-sticky-note-line"></i> FigJam</span>
+            <span class="uxui-tool-pill"><i class="ri-shape-2-line"></i> Penpot</span>
+            <span class="uxui-tool-pill"><i class="ri-survey-line"></i> Google Forms</span>
+            <span class="uxui-tool-pill"><i class="ri-vidicon-line"></i> Loom</span>
+          </div>
+        </div>
+
+        <div class="uxui-portfolio">
+          <h3 class="uxui-portfolio-title">Check Portfolio Samples</h3>
+          <div class="uxui-portfolio-buttons">
+            <button type="button" class="uxui-portfolio-btn" id="uxuiOpenResearch">
+              <i class="ri-search-eye-line"></i> UX Research
+            </button>
+            <button type="button" class="uxui-portfolio-btn" id="uxuiOpenDesign">
+              <i class="ri-window-2-line"></i> UX/UI Design
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXECUTIVE ASSISTANT SECTION -->
+  <section class="ea-showcase" id="eaShowcase">
+    <div class="ea-showcase-container">
+
+      <!-- LEFT: Content -->
+      <div class="ea-showcase-content">
+
+        <h2 class="ea-showcase-title">Executive Assistant</h2>
+        <p class="ea-showcase-intro">
+          Supporting founders, CEOs, and growing businesses through organized operations, proactive communication, and
+          reliable administrative support.
+        </p>
+
+        <h3 class="ea-services-heading">What I Can Help You With</h3>
+
+        <div class="ea-services-grid">
+          <div class="ea-service-card" tabindex="0" data-accordion="va1">
+            <i class="ri-mail-settings-line ea-service-icon"></i>
+            <span class="ea-service-title">Email &amp; Inbox Management</span>
+          </div>
+          <div class="ea-service-card" tabindex="0" data-accordion="va2">
+            <i class="ri-calendar-check-line ea-service-icon"></i>
+            <span class="ea-service-title">Calendar &amp; Scheduling</span>
+          </div>
+          <div class="ea-service-card" tabindex="0" data-accordion="va3">
+            <i class="ri-briefcase-4-line ea-service-icon"></i>
+            <span class="ea-service-title">Administrative &amp; Operations Support</span>
+          </div>
+          <div class="ea-service-card" tabindex="0" data-accordion="va4">
+            <i class="ri-customer-service-2-line ea-service-icon"></i>
+            <span class="ea-service-title">Customer &amp; Booking Support</span>
+          </div>
+          <div class="ea-service-card" tabindex="0" data-accordion="va5">
+            <i class="ri-shield-check-line ea-service-icon"></i>
+            <span class="ea-service-title">Quality Assurance &amp; Healthcare Documentation</span>
+          </div>
+          <div class="ea-service-card" tabindex="0" data-accordion="va6">
+            <i class="ri-megaphone-line ea-service-icon"></i>
+            <span class="ea-service-title">Social Media Management</span>
+          </div>
+          <div class="ea-service-card" tabindex="0" data-accordion="va7">
+            <i class="ri-magic-line ea-service-icon"></i>
+            <span class="ea-service-title">AI Content &amp; Creative Support</span>
+          </div>
+        </div>
+
+        <div class="ea-tools">
+          <h3 class="ea-tools-title">Tools I Use</h3>
+          <div class="ea-tools-row">
+            <span class="ea-tool-pill"><i class="ri-mail-line"></i> Gmail</span>
+            <span class="ea-tool-pill"><i class="ri-apps-2-line"></i> Google Workspace</span>
+            <span class="ea-tool-pill"><i class="ri-chat-3-line"></i> Google Chat</span>
+            <span class="ea-tool-pill"><i class="ri-vidicon-line"></i> Google Meet</span>
+            <span class="ea-tool-pill"><i class="ri-calendar-2-line"></i> Google Calendar</span>
+            <span class="ea-tool-pill"><i class="ri-file-text-line"></i> Google Docs</span>
+            <span class="ea-tool-pill"><i class="ri-table-line"></i> Google Sheets</span>
+            <span class="ea-tool-pill"><i class="ri-slideshow-3-line"></i> Google Slides</span>
+            <span class="ea-tool-pill"><i class="ri-survey-line"></i> Google Forms</span>
+            <span class="ea-tool-pill"><i class="ri-hard-drive-2-line"></i> Google Drive</span>
+            <span class="ea-tool-pill"><i class="ri-global-line"></i> Google Sites</span>
+            <span class="ea-tool-pill"><i class="ri-slack-fill"></i> Slack</span>
+            <span class="ea-tool-pill"><i class="ri-team-line"></i> Microsoft Teams</span>
+            <span class="ea-tool-pill"><i class="ri-vidicon-line"></i> Zoom</span>
+            <span class="ea-tool-pill"><i class="ri-sticky-note-line"></i> Notion</span>
+            <span class="ea-tool-pill"><i class="ri-todo-line"></i> Trello</span>
+            <span class="ea-tool-pill"><i class="ri-palette-line"></i> Canva</span>
+            <span class="ea-tool-pill"><i class="ri-scissors-cut-line"></i> CapCut</span>
+            <span class="ea-tool-pill"><i class="ri-pencil-ruler-2-line"></i> Figma</span>
+            <span class="ea-tool-pill"><i class="ri-bar-chart-2-line"></i> Metricool</span>
+            <span class="ea-tool-pill"><i class="ri-facebook-circle-line"></i> Meta Business Suite</span>
+            <span class="ea-tool-pill"><i class="ri-robot-line"></i> ChatGPT</span>
+            <span class="ea-tool-pill"><i class="ri-sparkling-2-line"></i> Claude</span>
+            <span class="ea-tool-pill"><i class="ri-star-line"></i> Gemini</span>
+            <span class="ea-tool-pill"><i class="ri-hotel-bed-line"></i> Booking.com</span>
+            <span class="ea-tool-pill"><i class="ri-home-4-line"></i> Airbnb</span>
+            <span class="ea-tool-pill"><i class="ri-building-line"></i> Agoda</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Model + Pills -->
+      <div class="ea-showcase-visual">
+        <div class="role-card role-card--ea ea-showcase-card" role="group" aria-label="Executive Assistant">
+          <img class="role-card-image" src="ea.png" alt="Executive Assistant model" />
+
+          <div class="floating-badges ea-showcase-badges" aria-hidden="true">
+            <div class="float-pill float-pill--1 float-pill--ea">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-calendar-2-line"></i></span>
+              <span class="pill-text">Organized</span>
+            </div>
+            <div class="float-pill float-pill--2 float-pill--ea">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-chat-1-line"></i></span>
+              <span class="pill-text">Communication</span>
+            </div>
+            <div class="float-pill float-pill--3 float-pill--ea">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-settings-3-line"></i></span>
+              <span class="pill-text">Systems</span>
+            </div>
+            <div class="float-pill float-pill--4 float-pill--ea">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-handshake-line"></i></span>
+              <span class="pill-text">Client Support</span>
+            </div>
+            <div class="float-pill float-pill--5 float-pill--ea">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-calendar-line"></i></span>
+              <span class="pill-text">Scheduling</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GRAPHIC DESIGNER SECTION -->
+  <section class="graphic-showcase" id="graphicShowcase">
+    <div class="graphic-showcase-container">
+
+      <!-- LEFT: Model + Pills -->
+      <div class="graphic-showcase-visual">
+        <div class="role-card role-card--graphic graphic-showcase-card" role="group" aria-label="Graphic Designer">
+          <img class="role-card-image" src="graphic design.png" alt="Graphic Designer model" />
+
+          <div class="floating-badges graphic-showcase-badges" aria-hidden="true">
+            <div class="float-pill float-pill--1 float-pill--graphic">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-pen-nib-line"></i></span>
+              <span class="pill-text">Branding</span>
+            </div>
+            <div class="float-pill float-pill--2 float-pill--graphic">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-sparkling-2-line"></i></span>
+              <span class="pill-text">Creative</span>
+            </div>
+            <div class="float-pill float-pill--3 float-pill--graphic">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-target-line"></i></span>
+              <span class="pill-text">Strategic</span>
+            </div>
+            <div class="float-pill float-pill--4 float-pill--graphic">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-megaphone-line"></i></span>
+              <span class="pill-text">Impactful</span>
+            </div>
+            <div class="float-pill float-pill--5 float-pill--graphic">
+              <span class="pill-icon" aria-hidden="true"><i class="ri-image-line"></i></span>
+              <span class="pill-text">Visual Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Content -->
+      <div class="graphic-showcase-content">
+
+        <h2 class="graphic-showcase-title">Graphic Designer</h2>
+        <p class="graphic-showcase-intro">
+          I create visually compelling designs that communicate ideas effectively, strengthen brand identity, and help
+          businesses stand out across digital and print platforms.
+        </p>
+
+        <div class="graphic-info-grid">
+          <div class="graphic-info-card" tabindex="0">
+            <h3>What I Do</h3>
+            <p>Design logos, social media graphics, marketing materials, presentations, banners, promotional assets, and
+              branded visuals for both digital and print use.</p>
+          </div>
+          <div class="graphic-info-card" tabindex="0">
+            <h3>My Contribution</h3>
+            <p>Transform ideas into visually engaging designs that communicate messages clearly, strengthen branding,
+              and create memorable customer experiences.</p>
+          </div>
+          <div class="graphic-info-card" tabindex="0">
+            <h3>Experience</h3>
+            <p>Designed social media campaigns, branding assets, presentation decks, marketing materials, print
+              layouts, and creative content for personal projects and client work.</p>
+          </div>
+          <div class="graphic-info-card" tabindex="0">
+            <h3>Approach</h3>
+            <p>Every design begins with understanding the audience and the brand. I focus on clarity, consistency,
+              visual hierarchy, and creating designs that are both attractive and purposeful.</p>
+          </div>
+        </div>
+
+        <div class="graphic-tools">
+          <h3 class="graphic-tools-title">Tools I Use</h3>
+          <div class="graphic-tools-row">
+            <span class="graphic-tool-pill"><i class="ri-palette-line"></i> Canva</span>
+            <span class="graphic-tool-pill"><i class="ri-pencil-ruler-2-line"></i> Figma</span>
+            <span class="graphic-tool-pill"><i class="ri-scissors-cut-line"></i> CapCut</span>
+          </div>
+        </div>
+
+        <div class="graphic-portfolio">
+          <h3 class="graphic-portfolio-title">Check Portfolio Samples</h3>
+          <div class="graphic-portfolio-buttons">
+            <button type="button" class="graphic-portfolio-btn" id="graphicOpenDesign">
+              <i class="ri-image-line"></i> Graphic Design
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
   <!-- TESTIMONIALS -->
   <section class="testimonials">
 
@@ -743,183 +1123,452 @@ and organized workflows so they can focus on growing their business.    </div>
             <div class="detail-row"><label>Year</label><span>2026</span></div>
             <div class="detail-row"><label>Instructor</label><span>Self-taught</span></div>
             <div class="detail-context">
-              <p>Designed workflows, templates, and client-ready content systems to improve organization, response time, and consistency across everyday business tasks.</p>
+              <p>Designed workflows, templates, and client-ready content systems to improve organization, response time,
+                and consistency across everyday business tasks.</p>
             </div>
           </div>
 
-          <div class="detail-context">
-              <div class="accordion">
-              <div class="accordion-item">
-                <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va1">QUALITY CONTROL &amp; HEALTHCARE DOCUMENTATION</button>
-                <div class="accordion-panel" data-accordion-panel="va1" hidden>
-                  <h4>What I Do</h4>
-                  <ul>
-                    <li>Verify and audit records for accuracy and consistency.</li>
-                    <li>Review patient information, physician details, locations, and medical orders.</li>
-                    <li>Ensure records match source documents and company requirements.</li>
-                    <li>Perform data entry and documentation updates.</li>
-                    <li>Maintain confidentiality and compliance with healthcare privacy standards.</li>
-                    <li>Knowledge of medical terminology and healthcare documentation workflows.</li>
-                    <li>HIPAA Certified.</li>
-                  </ul>
+          <div class="accordion">
 
-                  <h4>Certificate</h4>
-                  <img src="HIPA.jfif" alt="HIPA.jfif" />
+  <!-- 1. EMAIL & INBOX MANAGEMENT -->
+  <div class="accordion-item">
+    <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va1">EMAIL &amp; INBOX MANAGEMENT</button>
+    <div class="accordion-panel" data-accordion-panel="va1" >
+      <h4>What I Do</h4>
+      <ul>
+        <li>Organize and prioritize inboxes</li>
+        <li>Create labels, folders, and workflows</li>
+        <li>Sort, archive, and forward emails</li>
+        <li>Monitor follow-ups</li>
+        <li>Maintain organized communication systems</li>
+      </ul>
 
-                  <h4>How I Help Businesses</h4>
-                  <ul>
-                    <li>Reduce documentation errors.</li>
-                    <li>Improve data accuracy and record integrity.</li>
-                    <li>Support compliance and quality assurance processes.</li>
-                    <li>Maintain organized and reliable records for operations.</li>
-                  </ul>
+      <h4>Business Impact</h4>
+      <ul>
+        <li>Prevent missed emails</li>
+        <li>Improve communication efficiency</li>
+        <li>Keep inboxes organized</li>
+        <li>Save executives valuable time</li>
+      </ul>
 
-                  <h4>Tools I Use</h4>
-                  <ul>
-                    <li>Microsoft Excel</li>
-                    <li>Google Sheets</li>
-                    <li>Spreadsheet-based reporting tools</li>
-                    <li>Company-specific healthcare systems</li>
-                    <li>Data entry and documentation platforms</li>
-                  </ul>
-                </div>
+      <h4>Tools</h4>
+      <div class="va-tools-row">
+        <span class="uxui-tool-pill">Gmail</span>
+        <span class="uxui-tool-pill">Google Workspace</span>
+        <span class="uxui-tool-pill">Google Drive</span>
+        <span class="uxui-tool-pill">Google Chat</span>
+        <span class="uxui-tool-pill">Microsoft Teams</span>
+        <span class="uxui-tool-pill">Slack</span>
+        <span class="uxui-tool-pill">Zoom</span>
+      </div>
+
+      <button type="button" class="uxui-portfolio-btn va-cta-btn" data-va-cta="inbox">
+        <i class="ri-mail-open-line"></i> See Inbox Workflow Examples
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. CALENDAR & SCHEDULING -->
+  <div class="accordion-item">
+    <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va2">CALENDAR &amp; SCHEDULING</button>
+    <div class="accordion-panel" data-accordion-panel="va2">
+      <h4>What I Do</h4>
+      <ul>
+        <li>Manage executive calendars</li>
+        <li>Schedule meetings</li>
+        <li>Coordinate appointments</li>
+        <li>Handle recurring events</li>
+        <li>Prevent scheduling conflicts</li>
+      </ul>
+
+      <h4>Business Impact</h4>
+      <ul>
+        <li>Improve time management</li>
+        <li>Reduce missed meetings</li>
+        <li>Keep executives focused</li>
+        <li>Ensure smooth operations</li>
+      </ul>
+
+      <h4>Tools</h4>
+      <div class="va-tools-row">
+        <span class="uxui-tool-pill">Google Calendar</span>
+        <span class="uxui-tool-pill">Google Appointment Scheduler</span>
+        <span class="uxui-tool-pill">Calendly</span>
+        <span class="uxui-tool-pill">Google Meet</span>
+        <span class="uxui-tool-pill">Zoom</span>
+        <span class="uxui-tool-pill">Microsoft Teams</span>
+      </div>
+
+      <button type="button" class="uxui-portfolio-btn va-cta-btn" data-va-cta="calendar">
+        <i class="ri-calendar-2-line"></i> See Calendar Management Examples
+      </button>
+    </div>
+  </div>
+
+  <!-- 3. ADMINISTRATIVE & OPERATIONS SUPPORT -->
+  <div class="accordion-item">
+    <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va3">ADMINISTRATIVE &amp; OPERATIONS SUPPORT</button>
+    <div class="accordion-panel" data-accordion-panel="va3">
+      <h4>What I Do</h4>
+      <ul>
+        <li>Organize digital documents</li>
+        <li>Prepare reports</li>
+        <li>Create templates</li>
+        <li>Maintain documentation</li>
+        <li>Support daily administrative operations</li>
+      </ul>
+
+      <h4>Business Impact</h4>
+      <ul>
+        <li>Improve organization</li>
+        <li>Standardize workflows</li>
+        <li>Reduce administrative workload</li>
+        <li>Increase efficiency</li>
+      </ul>
+
+      <h4>Tools</h4>
+      <div class="va-tools-row">
+        <span class="uxui-tool-pill">Google Docs</span>
+        <span class="uxui-tool-pill">Google Sheets</span>
+        <span class="uxui-tool-pill">Google Slides</span>
+        <span class="uxui-tool-pill">Google Forms</span>
+        <span class="uxui-tool-pill">Google Drive</span>
+        <span class="uxui-tool-pill">Google Sites</span>
+        <span class="uxui-tool-pill">Notion</span>
+        <span class="uxui-tool-pill">Trello</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. CUSTOMER & BOOKING SUPPORT -->
+  <div class="accordion-item">
+    <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va4">CUSTOMER &amp; BOOKING SUPPORT</button>
+    <div class="accordion-panel" data-accordion-panel="va4" >
+      <h4>What I Do</h4>
+      <ul>
+        <li>Manage reservations</li>
+        <li>Handle customer inquiries</li>
+        <li>Coordinate bookings</li>
+        <li>Resolve scheduling conflicts</li>
+        <li>Maintain booking records</li>
+      </ul>
+
+      <h4>Business Impact</h4>
+      <ul>
+        <li>Improve customer experience</li>
+        <li>Reduce booking errors</li>
+        <li>Increase response speed</li>
+        <li>Keep reservation systems organized</li>
+      </ul>
+
+      <h4>Tools</h4>
+      <div class="va-tools-row">
+        <span class="uxui-tool-pill">Booking.com</span>
+        <span class="uxui-tool-pill">Airbnb</span>
+        <span class="uxui-tool-pill">Agoda</span>
+        <span class="uxui-tool-pill">Gmail</span>
+        <span class="uxui-tool-pill">Google Workspace</span>
+        <span class="uxui-tool-pill">Google Calendar</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. QUALITY ASSURANCE & HEALTHCARE DOCUMENTATION -->
+  <div class="accordion-item">
+    <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va5">QUALITY ASSURANCE &amp; HEALTHCARE DOCUMENTATION</button>
+    <div class="accordion-panel" data-accordion-panel="va5">
+      <h4>What I Do</h4>
+      <ul>
+        <li>Review records for accuracy</li>
+        <li>Verify patient information</li>
+        <li>Audit healthcare documentation</li>
+        <li>Maintain HIPAA compliance</li>
+        <li>Perform documentation updates</li>
+      </ul>
+
+      <h4>Business Impact</h4>
+      <ul>
+        <li>Reduce documentation errors</li>
+        <li>Improve data accuracy</li>
+        <li>Maintain compliance</li>
+        <li>Support reliable healthcare records</li>
+      </ul>
+
+      <h4>Credential</h4>
+      <div class="va-credential-badge">
+        <img src="HIPA.jfif" alt="HIPAA Certified">
+        <span>HIPAA Certified</span>
+      </div>
+
+      <h4>Tools</h4>
+      <div class="va-tools-row">
+        <span class="uxui-tool-pill">Microsoft Excel</span>
+        <span class="uxui-tool-pill">Google Sheets</span>
+        <span class="uxui-tool-pill">Healthcare Documentation Systems</span>
+        <span class="uxui-tool-pill">Documentation Platforms</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. SOCIAL MEDIA MANAGEMENT -->
+  <div class="accordion-item">
+    <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va6">SOCIAL MEDIA MANAGEMENT</button>
+    <div class="accordion-panel" data-accordion-panel="va6">
+      <h4>What I Do</h4>
+      <ul>
+        <li>Create content calendars</li>
+        <li>Schedule social posts</li>
+        <li>Write captions</li>
+        <li>Organize marketing assets</li>
+        <li>Monitor publishing schedules</li>
+      </ul>
+
+      <h4>Business Impact</h4>
+      <ul>
+        <li>Maintain consistent branding</li>
+        <li>Improve content organization</li>
+        <li>Increase publishing efficiency</li>
+        <li>Support long-term marketing</li>
+      </ul>
+
+      <h4>Tools</h4>
+      <div class="va-tools-row">
+        <span class="uxui-tool-pill">Meta Business Suite</span>
+        <span class="uxui-tool-pill">Metricool</span>
+        <span class="uxui-tool-pill">Canva</span>
+        <span class="uxui-tool-pill">CapCut</span>
+        <span class="uxui-tool-pill">Google Drive</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. AI CONTENT & CREATIVE SUPPORT -->
+  <div class="accordion-item">
+    <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va7">AI CONTENT &amp; CREATIVE SUPPORT</button>
+    <div class="accordion-panel" data-accordion-panel="va7">
+      <h4>What I Do</h4>
+      <ul>
+        <li>Develop AI-assisted workflows</li>
+        <li>Generate AI content</li>
+        <li>Create marketing assets</li>
+        <li>Produce short-form videos</li>
+        <li>Write captions and scripts</li>
+        <li>Organize creative assets</li>
+      </ul>
+
+      <h4>Business Impact</h4>
+      <ul>
+        <li>Speed up content production</li>
+        <li>Scale marketing efficiently</li>
+        <li>Reduce production time</li>
+        <li>Maintain consistent branding</li>
+      </ul>
+
+      <h4>Tools</h4>
+      <div class="va-tools-row">
+        <span class="uxui-tool-pill">ChatGPT</span>
+        <span class="uxui-tool-pill">Claude</span>
+        <span class="uxui-tool-pill">Gemini</span>
+        <span class="uxui-tool-pill">Canva</span>
+        <span class="uxui-tool-pill">CapCut</span>
+        <span class="uxui-tool-pill">Figma</span>
+        <span class="uxui-tool-pill">Metricool</span>
+        <span class="uxui-tool-pill">Google Drive</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+      <!-- CALENDAR & SCHEDULING DETAIL -->
+      <div id="detailModeCalendar" style="display:none;">
+        <button class="gallery-back" id="calendarBackBtn"><i class="ri-arrow-left-line"></i></button>
+        <div class="detail-scroll">
+          <div class="detail-info" style="margin-top:40px;">
+            <h3 style="font-size:22px;color:#111;font-weight:600;margin-bottom:12px;">Calendar &amp; Scheduling</h3>
+            <p style="font-size:14px;line-height:1.7;color:#444;">This portfolio project demonstrates my ability to organize and manage professional calendars using Google Calendar, including appointment scheduling, recurring events, reminders, meeting coordination, and time-zone management.</p>
+          </div>
+
+          <div class="detail-skills">
+            <h4>Skills Highlighted</h4>
+            <ul>
+              <li>Google Calendar Management</li>
+              <li>Appointment Scheduling</li>
+              <li>Calendar Organization</li>
+              <li>Meeting Coordination</li>
+              <li>Time Blocking</li>
+              <li>Recurring Events</li>
+              <li>Reminder Management</li>
+              <li>Time Zone Coordination</li>
+              <li>Productivity Optimization</li>
+            </ul>
+          </div>
+
+         <div class="detail-samples" id="calendarSamples">
+            <h4 class="detail-samples-heading">Samples</h4>
+
+            <div class="sample-category" data-category="cal-organization">
+              <h5 class="sample-category-title">Calendar Organization &amp; Scheduling</h5>
+              <p class="detail-context" style="margin:4px 0 12px;">Examples of daily scheduling, calendar organization, meeting management, and time-blocking techniques.</p>
+              <div class="sample-grid" id="calGridOrganization"></div>
+            </div>
+
+            <div class="sample-category" data-category="cal-labels">
+              <h5 class="sample-category-title">Custom Calendar Labels</h5>
+              <p class="detail-context" style="margin:4px 0 12px;">Created custom calendar labels based on client preferences and familiar naming conventions to improve organization and readability.</p>
+              <div class="sample-grid" id="calGridLabels"></div>
+            </div>
+
+            <div class="sample-category" data-category="cal-appointments">
+              <h5 class="sample-category-title">Google Appointment Scheduling</h5>
+              <p class="detail-context" style="margin:4px 0 12px;">Created Google Appointment Schedules that sync with calendar availability to reduce booking conflicts and overlapping appointments.</p>
+              <div class="sample-grid" id="calGridAppointments"></div>
+            </div>
+
+            <div class="sample-category" data-category="cal-recurring">
+              <h5 class="sample-category-title">Recurring Events &amp; Time Blocking</h5>
+              <p class="detail-context" style="margin:4px 0 12px;">Examples of recurring meetings, time blocking, and organized calendar management.</p>
+              <div class="sample-grid" id="calGridRecurring"></div>
+            </div>
+          </div>
+
+        <div class="detail-samples scenario-section">
+            <h4 class="detail-samples-heading">Scenarios</h4>
+
+            <div class="scenario-card">
+              <h5 class="sample-category-title">Discovery Call Scheduling</h5>
+             <div class="scenario-grid scenario-grid--single">
+                <img class="scenario-thumb scenario-thumb-full" src="discovery1.png" alt="Discovery Call Scheduling">
               </div>
-
-              <div class="accordion-item">
-                <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va2">EXECUTIVE &amp; ADMINISTRATIVE SUPPORT</button>
-                <div class="accordion-panel" data-accordion-panel="va2" hidden>
-                  <h4>What I Do</h4>
-                  <ul>
-                    <li>Manage calendars, appointments, and scheduling.</li>
-                    <li>Coordinate meetings and appointment bookings.</li>
-                    <li>Organize and prioritize inboxes.</li>
-                    <li>Create email labels, folders, and workflows.</li>
-                    <li>Forward, archive, and manage email communications.</li>
-                    <li>Maintain organized digital records and files.</li>
-                  </ul>
-
-                  <h4>How I Help Businesses</h4>
-                  <ul>
-                    <li>Keep executives and teams organized.</li>
-                    <li>Reduce missed appointments and scheduling conflicts.</li>
-                    <li>Improve communication efficiency.</li>
-                    <li>Ensure important messages receive timely attention.</li>
-                  </ul>
-
-                  <h4>Tools I Use</h4>
-                  <ul>
-                    <li>Google Calendar</li>
-                    <li>Google Appointment Scheduler</li>
-                    <li>Calendly</li>
-                    <li>Gmail</li>
-                    <li>Google Workspace</li>
-                    <li>Google Drive</li>
-                  </ul>
-                </div>
+             <div class="scenario-text">
+                <p><strong>Client Request:</strong> Client asked to schedule a discovery call with a prospect based in a different time zone.</p>
+                <p><strong>What I Did:</strong> Checked calendar availability, confirmed the correct meeting time across time zones, created a Google Meet link, and set up reminders for both parties.</p>
+                <p><strong>Skills Demonstrated:</strong></p>
+                <ul>
+                  <li>Time-zone coordination</li>
+                  <li>Calendar availability checking</li>
+                  <li>Google Meet creation</li>
+                  <li>Reminder setup</li>
+                  <li>Meeting coordination</li>
+                </ul>
+                <ul class="skill-color-legend">
+                  <li style="--dot-color:#FF5C8D;"><strong>Pink:</strong> Ensure the meeting title follows the client's preferred naming convention.</li>
+                  <li style="--dot-color:#E53935;"><strong>Red:</strong> Verify that the meeting time and date are accurate for both Catherine and Jerry by using Savvy Time to confirm the correct time zone conversion.</li>
+                  <li style="--dot-color:#8E24AA;"><strong>Purple:</strong> Set the calendar's time zone to Catherine's local time zone to prevent missed meetings or scheduling errors.</li>
+                  <li style="--dot-color:#1E88E5;"><strong>Blue:</strong> Add a Google Meet link, set two notifications (30 minutes and 10 minutes before), and mark the event as Busy.</li>
+                  <li style="--dot-color:#FB8C00;"><strong>Orange:</strong> Add Jerry as a guest to the calendar event so he receives the meeting invitation and confirmation via email.</li>
+                </ul>
               </div>
+            </div>
 
-              <div class="accordion-item">
-                <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va3">BOOKING &amp; CUSTOMER SUPPORT</button>
-                <div class="accordion-panel" data-accordion-panel="va3" hidden>
-                  <h4>What I Do</h4>
-                  <ul>
-                    <li>Assist with accommodation bookings.</li>
-                    <li>Monitor reservations and booking schedules.</li>
-                    <li>Handle customer communication regarding reservations.</li>
-                    <li>Support resolution of scheduling and booking conflicts.</li>
-                    <li>Assist with double-booking situations and customer inquiries.</li>
-                  </ul>
-
-                  <h4>How I Help Businesses</h4>
-                  <ul>
-                    <li>Improve customer experience.</li>
-                    <li>Reduce booking errors.</li>
-                    <li>Maintain organized reservation processes.</li>
-                    <li>Support smooth business operations.</li>
-                  </ul>
-
-                  <h4>Tools I Use</h4>
-                  <ul>
-                    <li>Booking.com</li>
-                    <li>Agoda</li>
-                    <li>Airbnb</li>
-                    <li>Google Workspace</li>
-                    <li>Email and communication platforms</li>
-                  </ul>
-                </div>
+            <div class="scenario-card">
+              <h5 class="sample-category-title">Meeting Rescheduling</h5>
+             <div class="scenario-grid scenario-grid--single">
+                <img class="scenario-thumb scenario-thumb-full" src="beforeafter.png" alt="Meeting Rescheduling">
               </div>
-
-              <div class="accordion-item">
-                <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va4">SOCIAL MEDIA &amp; CONTENT SUPPORT</button>
-                <div class="accordion-panel" data-accordion-panel="va4" hidden>
-                  <h4>What I Do</h4>
-                  <ul>
-                    <li>Create and schedule social media content.</li>
-                    <li>Write captions and post descriptions.</li>
-                    <li>Plan content calendars.</li>
-                    <li>Organize marketing assets and media files.</li>
-                    <li>Monitor content publishing schedules.</li>
-                    <li>Support audience engagement and content consistency.</li>
-                  </ul>
-
-                  <h4>How I Help Businesses</h4>
-                  <ul>
-                    <li>Maintain an active online presence.</li>
-                    <li>Increase brand visibility.</li>
-                    <li>Improve content organization and workflow.</li>
-                    <li>Support long-term content planning.</li>
-                  </ul>
-
-                  <h4>Tools I Use</h4>
-                  <ul>
-                    <li>Meta Business Suite</li>
-                    <li>Metricool</li>
-                    <li>CapCut</li>
-                    <li>Google Drive</li>
-                    <li>Google Workspace</li>
-                  </ul>
-                </div>
+              <div class="scenario-text">
+                <p><strong>Skills Demonstrated:</strong></p>
+                <ul>
+                  <li>Rescheduling existing meetings</li>
+                  <li>Updating invitations</li>
+                  <li>Notifying attendees</li>
+                  <li>Calendar maintenance</li>
+                </ul>
               </div>
+            </div>
 
-              <div class="accordion-item">
-                <button class="accordion-btn" type="button" aria-expanded="false" data-accordion="va5">AI CONTENT CREATION &amp; VIDEO PRODUCTION</button>
-                <div class="accordion-panel" data-accordion-panel="va5" hidden>
-                  <h4>What I Do</h4>
-                  <ul>
-                    <li>Develop AI-assisted content strategies.</li>
-                    <li>Create monthly content plans and posting schedules.</li>
-                    <li>Generate AI images and videos based on business goals.</li>
-                    <li>Organize content assets for efficient workflow management.</li>
-                    <li>Edit and optimize video content.</li>
-                    <li>Create captions, descriptions, and publishing schedules.</li>
-                    <li>Gather client feedback and continuously improve content quality.</li>
-                  </ul>
+            <div class="scenario-card">
+              <h5 class="sample-category-title">Weekly Sync with Jerry</h5>
+             <div class="scenario-grid scenario-grid--single">
+                <img class="scenario-thumb scenario-thumb-full" src="withjerry1.png" alt="Weekly Sync with Jerry">
+              </div>
+             <div class="scenario-text">
+                <p><strong>Skills Demonstrated:</strong></p>
+                <ul>
+                  <li>Recurring event creation</li>
+                  <li>Google Meet setup</li>
+                  <li>Participant invitations</li>
+                  <li>Workflow management</li>
+                </ul>
+                <ul class="skill-color-legend">
+                  <li style="--dot-color:#FDD835;"><strong>Yellow:</strong> Ensured the meeting title is correct.</li>
+                  <li style="--dot-color:#FB8C00;"><strong>Orange:</strong> Set the meeting to recur weekly every Wednesday from 11:30 AM to 12:00 PM (Los Angeles Time) based on the client's request.</li>
+                  <li style="--dot-color:#1E88E5;"><strong>Blue:</strong> Added a Google Meet link so both participants can join easily without any unnecessary setup.</li>
+                  <li style="--dot-color:#43A047;"><strong>Green:</strong> Invited both attendees to the recurring meeting so it appears on both of their calendars.</li>
+                  <li style="--dot-color:#E53935;"><strong>Red:</strong> Sent a confirmation email to inform the client that the meeting has been scheduled.</li>
+                </ul>
+              </div>
+            </div>
 
-                  <h4>How I Help Businesses</h4>
-                  <ul>
-                    <li>Scale content production efficiently.</li>
-                    <li>Maintain consistent branding across platforms.</li>
-                    <li>Reduce content creation time.</li>
-                    <li>Produce organized, high-volume content for marketing campaigns.</li>
-                  </ul>
-
-                  <h4>Tools I Use</h4>
-                  <ul>
-                    <li>ChatGPT</li>
-                    <li>Gemini</li>
-                    <li>Flow AI</li>
-                    <li>YouTube AI Tools</li>
-                    <li>CapCut</li>
-                    <li>Google Drive</li>
-                    <li>Meta Business Suite</li>
-                    <li>Metricool</li>
-                  </ul>
-                </div>
+            <div class="scenario-card">
+              <h5 class="sample-category-title">Appointment Booking</h5>
+              <div class="scenario-grid" id="calGridBooking"></div>
+             <div class="scenario-text">
+                <p><strong>Skills Demonstrated:</strong></p>
+                <ul>
+                  <li>Appointment scheduling</li>
+                  <li>Vendor coordination</li>
+                  <li>Google Maps direction links</li>
+                  <li>Calendar event creation</li>
+                  <li>Verification of date, time, and reminders</li>
+                </ul>
+                <ul class="skill-color-legend">
+                  <li style="--dot-color:#43A047;"><strong>Green:</strong> Checked the availability of services at Style by Tommy.</li>
+                  <li style="--dot-color:#1E88E5;"><strong>Blue:</strong> Verified that the correct time zone was selected for the appointment.</li>
+                  <li style="--dot-color:#8E24AA;"><strong>Purple:</strong> Checked for available appointment slots on July 24 for a 1-hour session in the late morning or early afternoon. After securing an available slot, confirmed the appointment time as 11:00 AM – 12:00 PM.</li>
+                  <li style="--dot-color:#FB8C00;"><strong>Orange:</strong> Searched for the salon's location on Google Maps, selected Directions, and copied the shareable link so the client can click it, enter their starting location, and receive turn-by-turn directions to Style by Tommy.</li>
+                </ul>
+                <p class="detail-note"><strong>Next Image:</strong> Finalized the appointment by double-checking that the date, time, title, location link, and time zone were all correct before adding it to the client's calendar.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- EMAIL & INBOX MANAGEMENT DETAIL -->
+<div id="detailModeInbox" style="display:none;">
+  <button class="gallery-back" id="inboxBackBtn"><i class="ri-arrow-left-line"></i></button>
+  <div class="detail-scroll">
+    <div class="detail-info" style="margin-top:40px;">
+      <h3 style="font-size:22px;color:#111;font-weight:600;margin-bottom:12px;">Email &amp; Inbox Management</h3>
+      <p style="font-size:14px;line-height:1.7;color:#444;">Professional inbox organization, email template setup, and workflow automation to improve communication efficiency and reduce repetitive administrative work.</p>
+    </div>
+
+    <div class="detail-samples" id="inboxSamples">
+      <h4 class="detail-samples-heading">Samples</h4>
+
+      <div class="sample-category" data-category="inbox-templates">
+        <h5 class="sample-category-title">Email Templates</h5>
+        <p class="detail-context" style="margin:4px 0 12px;">Set up reusable Gmail templates for common business inquiries, including a professional "Thanks for reaching out" response with a calendar booking link and a follow-up template for leads that have not responded after one week.</p>
+        <div class="scenario-grid scenario-grid--single">
+          <img class="scenario-thumb scenario-thumb-full" src="INBOXTEMPLATE.png" alt="Email Templates">
+        </div>
+      </div>
+
+    <div class="sample-category" data-category="inbox-organization">
+        <h5 class="sample-category-title">Inbox Organization</h5>
+        <p class="detail-context" style="margin:4px 0 12px;">Organized and managed business email accounts using labels, filters, priority inbox settings, and automation rules to improve response time and reduce inbox clutter.</p>
+
+        <div class="scenario-grid scenario-grid--pair">
+          <img class="scenario-thumb-full" src="ORGANIZE.png" alt="Inbox Organization Example 1">
+          <img class="scenario-thumb-full" src="ORGANIZE2.png" alt="Inbox Organization Example 2">
+        </div>
+      </div>
+
+      <div class="sample-category" data-category="inbox-beforeafter">
+        <h5 class="sample-category-title">Before &amp; After</h5>
+        <div class="scenario-grid scenario-grid--single">
+          <img class="scenario-thumb scenario-thumb-full" src="BEFOREAFTER2.png" alt="Before and After Inbox">
+        </div>
+        <div class="scenario-text">
+          <p><strong>Before:</strong> 500 unread emails</p>
+          <p><strong>After:</strong> Inbox categorized with labels, filters, and a priority system</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
       <div id="detailModeP3" style="display:none;">
 

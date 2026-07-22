@@ -6,6 +6,7 @@ const brand = document.getElementById("brand");
 const bar = document.getElementById("bar");
 const progress = document.getElementById("progress");
 const skills = document.getElementById("skills");
+const roleCards = document.getElementById("roleCards");
 const modelSection = document.getElementById("modelSection");
 const tagline = document.getElementById("tagline");
 const cta = document.getElementById("cta");
@@ -26,6 +27,7 @@ window.addEventListener("pageshow", () => {
   const isAtTop = window.scrollY < 50;
 
   document.body.classList.add("intro-active");
+
   if (!hasPlayed && isAtTop) {
     sessionStorage.setItem("introPlayed", "true");
     brand.classList.add("intro");
@@ -33,6 +35,7 @@ window.addEventListener("pageshow", () => {
     bar.style.width = "100%";
 
     setTimeout(() => brand.classList.add("focus"), 800);
+
     setTimeout(() => {
       brand.classList.remove("focus");
       brand.classList.add("fade-out");
@@ -57,13 +60,15 @@ window.addEventListener("pageshow", () => {
     skipIntro();
   }
 });
+
 function showUI() {
   document.body.classList.remove("intro-active");
 
   modelSection.classList.add("show");
-  skills.classList.add("show");
+  if (skills) skills.classList.add("show");
+  if (roleCards) roleCards.classList.add("show");
   tagline.classList.add("show");
-  cta.classList.add("show");
+if (cta) cta.classList.add("show");
 
   const availability = document.querySelector(".availability");
   const book = document.querySelector(".book-call");
@@ -198,6 +203,62 @@ const sections = {
 };
 
 const navItems = document.querySelectorAll(".nav-item");
+
+// ===== HERO ROLE CARDS -> smooth scroll to matching showcase section =====
+// We target each section's HEADING (not the section wrapper) because the
+// wrapper's own top edge often has extra top padding, or its content column
+// is vertically centered against a taller visual column — scrolling to the
+// wrapper's top can leave blank space above the fold instead of the title.
+const heroRoleCardTargets = {
+  uxui: {
+    section: document.getElementById("uxuiShowcase"),
+    heading: document.querySelector(".uxui-showcase-title"),
+  },
+  ea: {
+    section: document.getElementById("eaShowcase"),
+    heading: document.querySelector(".ea-showcase-title"),
+  },
+  graphic: {
+    section: document.getElementById("graphicShowcase"),
+    heading: document.querySelector(".graphic-showcase-title"),
+  },
+};
+
+// Small gap so the heading isn't glued to the very top edge of the viewport
+const HERO_NAV_SCROLL_OFFSET = 32;
+
+document.querySelectorAll("#roleCards .role-card").forEach((card) => {
+  const roleClass = [...card.classList].find((c) => c.startsWith("role-card--"));
+  if (!roleClass) return;
+
+  const roleKey = roleClass.replace("role-card--", ""); // "uxui" | "ea" | "graphic"
+  const targetInfo = heroRoleCardTargets[roleKey];
+  if (!targetInfo || !targetInfo.section) return;
+
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("role", "button");
+  card.style.cursor = "pointer";
+
+  const scrollToTarget = () => {
+    // Fall back to the section itself if the heading isn't found for some reason
+    const anchor = targetInfo.heading || targetInfo.section;
+    const top = anchor.getBoundingClientRect().top + window.scrollY - HERO_NAV_SCROLL_OFFSET;
+
+    window.scrollTo({
+      top: Math.max(top, 0),
+      behavior: "smooth"
+    });
+  };
+
+  card.addEventListener("click", scrollToTarget);
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      scrollToTarget();
+    }
+  });
+});
+
 
 window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
@@ -513,7 +574,7 @@ document.querySelectorAll(".nav-item").forEach(item => {
     }
 
     if (label === "projects") {
-      offset = 80;
+      offset = 1;
     }
 
     const top = section.offsetTop + offset;
@@ -571,9 +632,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const detailMode = document.getElementById("detailMode");
   const detailModeP2 = document.getElementById("detailModeP2");
   const detailModeP3 = document.getElementById("detailModeP3");
-  const detailModeP4 = document.getElementById("detailModeP4");
-  const projectPreview = document.getElementById("projectPreview");
-  const closeProject = document.getElementById("closeProject");
+const detailModeP4 = document.getElementById("detailModeP4");
+const detailModeInbox = document.getElementById("detailModeInbox");
+  const detailModeCalendar = document.getElementById("detailModeCalendar");
+  const projectPreview = document.getElementById("projectPreview");  const closeProject = document.getElementById("closeProject");
   const galleryPrev = document.getElementById("galleryPrev");
   const galleryNext = document.getElementById("galleryNext");
   const galleryCounter = document.getElementById("galleryCounter");
@@ -587,7 +649,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentGalleryImages = [];
   let currentGalleryIndex = 0;
 
-  const project1Samples = ["pr1.jpg","pr2.jpg","pr3.jpg","pr4.png","pr5.png","pr6.jpg","pr7.jpg","pr9.jpg"]; 
+  const project1Samples = ["pr1.png","pr2.jpg","pr3.jpg","pr4.png","pr5.png","pr6.jpg","pr7.jpg","pr9.jpg"]; 
 const project1Videos = ["v1.mp4","v2.mp4"];
 
   const REAL_PREFIX = "REAL";
@@ -627,7 +689,7 @@ const project1Videos = ["v1.mp4","v2.mp4"];
     return buckets;
   }
 
-  function renderSampleGrid(gridEl, images) {
+ function renderSampleGrid(gridEl, images) {
     gridEl.innerHTML = "";
     images.forEach((src) => {
       const img = document.createElement("img");
@@ -635,6 +697,23 @@ const project1Videos = ["v1.mp4","v2.mp4"];
       img.addEventListener("click", (e) => {
         e.stopPropagation();
         openGalleryMode([src]);
+      });
+      gridEl.appendChild(img);
+    });
+  }
+
+  // Like renderSampleGrid, but clicking any thumbnail opens a gallery
+  // containing ALL images in that section (starting at the clicked one),
+  // so users can arrow through the whole section.
+  function renderSectionGrid(gridEl, images) {
+    if (!gridEl) return;
+    gridEl.innerHTML = "";
+    images.forEach((src, idx) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openGalleryMode(images, idx);
       });
       gridEl.appendChild(img);
     });
@@ -662,11 +741,26 @@ const project1Videos = ["v1.mp4","v2.mp4"];
     renderThumbs();
   }
 
-  function openGalleryMode(images) {
-    galleryMode.style.display = "block";
-    detailMode.style.display = "none";
+let lastOpenedDetailScreen = detailMode;
+
+  function openGalleryMode(images, startIndex = 0) {
+    // remember which detail screen we came from so the gallery "back"
+    // arrow returns to the right place
+    [detailMode, detailModeP2, detailModeP3, detailModeP4, detailModeCalendar, detailModeInbox].forEach((el) => {
+      if (el && el.style.display === "block") {
+        lastOpenedDetailScreen = el;
+      }
+    });
+
+   galleryMode.style.display = "block";
+    projectModal.classList.add("gallery-active");
+    projectModal.classList.remove("calendar-active", "inbox-active");
+    [detailMode, detailModeP2, detailModeP3, detailModeP4, detailModeCalendar, detailModeInbox].forEach((el) => {
+      if (el) el.style.display = "none";
+    });
+
     currentGalleryImages = images;
-    currentGalleryIndex = 0;
+    currentGalleryIndex = startIndex;
 
     // Single-image mode (Graphic Design sample previews)
     const isSingleImage = images.length === 1;
@@ -678,8 +772,10 @@ const project1Videos = ["v1.mp4","v2.mp4"];
   }
 
 
-  function openDetailMode() {
+ function openDetailMode() {
     galleryMode.style.display = "none";
+    projectModal.classList.remove("gallery-active");
+    projectModal.classList.remove("calendar-active");
     detailMode.style.display = "block";
 
     // New categorized sample grids (ordered: REAL -> WATER -> PRODUCT -> Other)
@@ -726,6 +822,47 @@ const project1Videos = ["v1.mp4","v2.mp4"];
     document.body.classList.add("modal-open");
   }
 
+  function openCalendarDetail() {
+    galleryMode.style.display = "none";
+    projectModal.classList.remove("gallery-active");
+    detailMode.style.display = "none";
+    detailModeP2.style.display = "none";
+    detailModeP3.style.display = "none";
+    if (detailModeP4) detailModeP4.style.display = "none";
+    if (!detailModeCalendar) return;
+
+    renderSectionGrid(document.getElementById("calGridOrganization"), ["image (9).png", "image (10).png", "image (11).png"]);
+    renderSectionGrid(document.getElementById("calGridLabels"), ["labels.png"]);
+    renderSectionGrid(document.getElementById("calGridAppointments"), ["appoint1.png", "appoint2.png", "appoint3.png"]);
+    renderSectionGrid(document.getElementById("calGridRecurring"), ["sched1.png", "sched2.png", "sched3.png"]);
+    renderSectionGrid(document.getElementById("calGridBooking"), ["withjerry2.png", "withjerry3.png"]);
+
+    document.querySelectorAll("#detailModeCalendar .scenario-thumb:not(.scenario-thumb-full)").forEach((img) => {
+      img.onclick = (e) => {
+        e.stopPropagation();
+        openGalleryMode([img.getAttribute("src")]);
+      };
+    });
+
+   detailModeCalendar.style.display = "block";
+    projectModal.classList.add("calendar-active");
+    projectModal.classList.add("show");
+    document.body.classList.add("modal-open");
+  }
+
+  // expose so the outer (non-DOMContentLoaded-scoped) .va-cta-btn handler can call it
+  window.__openCalendarDetail = openCalendarDetail;
+
+  const calendarBackBtn = document.getElementById("calendarBackBtn");
+   if (calendarBackBtn) {
+    calendarBackBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      projectModal.classList.remove("calendar-active");
+      detailModeCalendar.style.display = "none";
+      if (detailModeP4) detailModeP4.style.display = "block";
+    });
+  }
+
   if (project1Card) {
     project1Card.style.cursor = "pointer";
     project1Card.addEventListener("click", () => {
@@ -733,12 +870,14 @@ const project1Videos = ["v1.mp4","v2.mp4"];
     });
   }
 
-  if (project2Card) {
+ if (project2Card) {
     project2Card.style.cursor = "pointer";
     project2Card.addEventListener("click", () => {
       galleryMode.style.display = "none";
       detailMode.style.display = "none";
       detailModeP2.style.display = "block";
+      if (detailModeCalendar) detailModeCalendar.style.display = "none";
+            projectModal.classList.remove("calendar-active"); // add
       projectModal.classList.add("show");
       document.body.classList.add("modal-open");
     });
@@ -752,6 +891,7 @@ const project1Videos = ["v1.mp4","v2.mp4"];
       detailModeP2.style.display = "none";
       detailModeP3.style.display = "block";
       if (detailModeP4) detailModeP4.style.display = "none";
+      if (detailModeCalendar) detailModeCalendar.style.display = "none";
       projectModal.classList.add("show");
       document.body.classList.add("modal-open");
     });
@@ -765,14 +905,66 @@ const project1Videos = ["v1.mp4","v2.mp4"];
       detailModeP2.style.display = "none";
       detailModeP3.style.display = "none";
       if (detailModeP4) detailModeP4.style.display = "block";
+       projectModal.classList.remove("calendar-active"); // add
       projectModal.classList.add("show");
       document.body.classList.add("modal-open");
     });
   }
 
+// Reveal UX/UI Designer showcase section on scroll
+  const uxuiShowcase = document.getElementById("uxuiShowcase");
+  if (uxuiShowcase) {
+    const revealUxui = () => {
+      const trigger = window.innerHeight * 0.85;
+      const top = uxuiShowcase.getBoundingClientRect().top;
+      if (top < trigger) {
+        uxuiShowcase.classList.add("show");
+      }
+    };
+    window.addEventListener("scroll", revealUxui);
+    revealUxui();
+  }
 
-  if (p2Arrow && p2MainImage) {
-    p2Arrow.addEventListener("click", (e) => {
+  // UX/UI Designer showcase -> open existing Project Modal (reused, no new modal)
+  const uxuiOpenResearch = document.getElementById("uxuiOpenResearch");
+  const uxuiOpenDesign = document.getElementById("uxuiOpenDesign");
+
+ function openExistingDetailModal(target) {
+    galleryMode.style.display = "none";
+    detailMode.style.display = "none";
+    detailModeP2.style.display = "none";
+    detailModeP3.style.display = "none";
+    if (detailModeP4) detailModeP4.style.display = "none";
+    if (detailModeCalendar) detailModeCalendar.style.display = "none";
+        projectModal.classList.remove("calendar-active"); // add
+
+
+    target.style.display = "block";
+    projectModal.classList.add("show");
+    document.body.classList.add("modal-open");
+  }
+
+  if (uxuiOpenResearch) {
+    uxuiOpenResearch.addEventListener("click", () => {
+      openExistingDetailModal(detailModeP3);
+    });
+  }
+
+ if (uxuiOpenDesign) {
+    uxuiOpenDesign.addEventListener("click", () => {
+      openExistingDetailModal(detailModeP2);
+    });
+  }
+
+  // Graphic Designer showcase -> reuse existing Graphic Design project modal
+  const graphicOpenDesign = document.getElementById("graphicOpenDesign");
+  if (graphicOpenDesign) {
+    graphicOpenDesign.addEventListener("click", () => {
+      openDetailMode();
+    });
+  }
+
+  if (p2Arrow && p2MainImage) {    p2Arrow.addEventListener("click", (e) => {
       e.stopPropagation();
       const currentSrc = p2MainImage.getAttribute("src");
       p2MainImage.src = currentSrc === "p22.png" ? "p21.png" : "p22.png";
@@ -796,85 +988,110 @@ const project1Videos = ["v1.mp4","v2.mp4"];
     goBackToDetail();
   });
 
-  // Accordion behavior (used by VA detail view)
-  document.querySelectorAll('.accordion').forEach((accordionEl) => {
-    const items = accordionEl.querySelectorAll('.accordion-item');
-
-    // start fully collapsed (all panels closed, no aria-expanded mismatch)
-    items.forEach((item) => {
-      const btn = item.querySelector('.accordion-btn');
-      const panel = item.querySelector('.accordion-panel');
+// Accordion behavior (used by VA detail view)
+  // Pure class-toggle approach — no scrollHeight reads, no setTimeout hacks,
+  // no inline style writes. CSS alone handles the open/close animation.
+  function closeAllAccordionItems(accordionEl) {
+    accordionEl.querySelectorAll('.accordion-item').forEach((item) => {
       item.classList.remove('open');
+      const btn = item.querySelector('.accordion-btn');
       if (btn) btn.setAttribute('aria-expanded', 'false');
-      if (panel) {
-        panel.hidden = true;
-        panel.style.maxHeight = '0px';
-        panel.style.opacity = '0';
-      }
     });
+  }
 
+  function openAccordionItem(accordionEl, targetBtn) {
+    closeAllAccordionItems(accordionEl);
+    const targetItem = targetBtn.closest('.accordion-item');
+    if (!targetItem) return;
+    targetItem.classList.add('open');
+    targetBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  // expose for reuse by the EA service-card navigation below
+  window.__accordionHelpers = { closeAllAccordionItems, openAccordionItem };
+
+  document.querySelectorAll('.accordion').forEach((accordionEl) => {
     accordionEl.querySelectorAll('.accordion-btn').forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
-
         const accordionItem = btn.closest('.accordion-item');
-        const panelId = btn.getAttribute('data-accordion');
-        const panel = accordionEl.querySelector(`.accordion-panel[data-accordion-panel="${panelId}"]`);
-        if (!accordionItem || !panel) return;
+        if (!accordionItem) return;
 
         const isOpen = accordionItem.classList.contains('open');
+        closeAllAccordionItems(accordionEl);
 
-        // close all siblings first (single-open behavior)
-        const allItems = accordionEl.querySelectorAll('.accordion-item');
-        allItems.forEach((item) => {
-          if (item !== accordionItem) {
-            item.classList.remove('open');
-            const otherBtn = item.querySelector('.accordion-btn');
-            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-
-            const otherPanel = item.querySelector('.accordion-panel');
-            if (otherPanel) {
-              otherPanel.style.maxHeight = '0px';
-              otherPanel.style.opacity = '0';
-              window.setTimeout(() => {
-                otherPanel.hidden = true;
-              }, 450);
-            }
-          }
-        });
-
-        if (isOpen) {
-          accordionItem.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-
-          panel.style.maxHeight = '0px';
-          panel.style.opacity = '0';
-          window.setTimeout(() => {
-            panel.hidden = true;
-          }, 450);
-        } else {
+        if (!isOpen) {
           accordionItem.classList.add('open');
           btn.setAttribute('aria-expanded', 'true');
-
-          // open with smooth downward animation
-          panel.hidden = false;
-          const targetHeight = panel.scrollHeight;
-          panel.style.maxHeight = targetHeight + 'px';
-          panel.style.opacity = '1';
-
-          // allow growth if content wraps/reflows after open
-          window.setTimeout(() => {
-            panel.style.maxHeight = 'none';
-          }, 460);
         }
       });
     });
   });
 
+function openInboxDetail() {
+  galleryMode.style.display = "none";
+  projectModal.classList.remove("gallery-active");
+  detailMode.style.display = "none";
+  detailModeP2.style.display = "none";
+  detailModeP3.style.display = "none";
+  if (detailModeP4) detailModeP4.style.display = "none";
+  if (detailModeCalendar) detailModeCalendar.style.display = "none";
+  projectModal.classList.remove("calendar-active");
+  if (!detailModeInbox) return;
+
+ document.querySelectorAll("#detailModeInbox .scenario-thumb:not(.scenario-thumb-full)").forEach((img) => {
+    img.onclick = (e) => {
+      e.stopPropagation();
+      openGalleryMode([img.getAttribute("src")]);
+    };
+  });
+
+  detailModeInbox.style.display = "block";
+  projectModal.classList.add("inbox-active");
+  projectModal.classList.add("show");
+  document.body.classList.add("modal-open");
+}
+
+window.__openInboxDetail = openInboxDetail;
+
+const inboxBackBtn = document.getElementById("inboxBackBtn");
+if (inboxBackBtn) {
+  inboxBackBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    projectModal.classList.remove("inbox-active");
+    detailModeInbox.style.display = "none";
+    if (detailModeP4) detailModeP4.style.display = "block";
+  });
+}
+
+document.querySelectorAll('.va-cta-btn').forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    if (btn.dataset.vaCta === 'calendar' && window.__openCalendarDetail) {
+      window.__openCalendarDetail();
+      return;
+    }
+
+    if (btn.dataset.vaCta === 'inbox' && window.__openInboxDetail) {
+      window.__openInboxDetail();
+      return;
+    }
+
+    console.log('Open samples for:', btn.dataset.vaCta);
+  });
+});
 
 function goBackToDetail() {
     galleryMode.style.display = "none";
-    detailMode.style.display = "block";
+    projectModal.classList.remove("gallery-active");
+
+    const target = lastOpenedDetailScreen || detailMode;
+
+    if (target === detailModeCalendar) projectModal.classList.add("calendar-active");
+    if (target === detailModeInbox) projectModal.classList.add("inbox-active");
+
+    target.style.display = "block";
   }
 
 
@@ -884,16 +1101,21 @@ function goBackToDetail() {
       video.pause();
       video.currentTime = 0;
     });
-    projectModal.classList.remove("show");
+ projectModal.classList.remove("show");
     projectModal.classList.remove("single-image-gallery");
+    projectModal.classList.remove("gallery-active");
+    projectModal.classList.remove("calendar-active");
+    projectModal.classList.remove("inbox-active");
 
     document.body.classList.remove("modal-open");
-    setTimeout(() => {
+   setTimeout(() => {
       galleryMode.style.display = "block";
       detailMode.style.display = "none";
       detailModeP2.style.display = "none";
       detailModeP3.style.display = "none";
       if (detailModeP4) detailModeP4.style.display = "none";
+      if (detailModeCalendar) detailModeCalendar.style.display = "none";
+      if (detailModeInbox) detailModeInbox.style.display = "none";
     }, 400);
   }
 
@@ -921,5 +1143,92 @@ function goBackToDetail() {
         updateGallery();
       }
     }
+  });
+});
+
+
+// Reveal Executive Assistant showcase section on scroll
+document.addEventListener("DOMContentLoaded", () => {
+  const eaShowcase = document.getElementById("eaShowcase");
+  if (eaShowcase) {
+    const revealEa = () => {
+      const trigger = window.innerHeight * 0.85;
+      const top = eaShowcase.getBoundingClientRect().top;
+      if (top < trigger) {
+        eaShowcase.classList.add("show");
+      }
+    };
+    window.addEventListener("scroll", revealEa);
+    revealEa();
+  }
+
+  // Reveal Graphic Designer showcase section on scroll
+  const graphicShowcase = document.getElementById("graphicShowcase");
+  if (graphicShowcase) {
+    const revealGraphic = () => {
+      const trigger = window.innerHeight * 0.85;
+      const top = graphicShowcase.getBoundingClientRect().top;
+      if (top < trigger) {
+        graphicShowcase.classList.add("show");
+      }
+    };
+    window.addEventListener("scroll", revealGraphic);
+    revealGraphic();
+  }
+
+  // Service cards -> open VA modal (detailModeP4) with matching accordion expanded
+  const eaServiceCards = document.querySelectorAll(".ea-service-card");
+  const projectModal = document.getElementById("projectModal");
+  const galleryMode = document.getElementById("galleryMode");
+  const detailMode = document.getElementById("detailMode");
+  const detailModeP2 = document.getElementById("detailModeP2");
+  const detailModeP3 = document.getElementById("detailModeP3");
+const detailModeP4 = document.getElementById("detailModeP4");
+  const detailModeCalendar = document.getElementById("detailModeCalendar");
+  const detailModeInbox = document.getElementById("detailModeInbox");
+function openVaAccordionItem(targetId) {
+    if (!projectModal || !detailModeP4) return;
+
+    galleryMode.style.display = "none";
+    detailMode.style.display = "none";
+    detailModeP2.style.display = "none";
+    detailModeP3.style.display = "none";
+    const detailModeCalendarEl = document.getElementById("detailModeCalendar");
+    if (detailModeCalendarEl) detailModeCalendarEl.style.display = "none";
+        projectModal.classList.remove("calendar-active"); // add
+
+    detailModeP4.style.display = "block";
+
+    projectModal.classList.add("show");
+    document.body.classList.add("modal-open");
+
+    const accordionEl = detailModeP4.querySelector(".accordion");
+    const targetBtn = accordionEl && accordionEl.querySelector(`.accordion-btn[data-accordion="${targetId}"]`);
+    if (!accordionEl || !targetBtn) return;
+
+    const { openAccordionItem } = window.__accordionHelpers;
+    openAccordionItem(accordionEl, targetBtn);
+
+    const targetItem = targetBtn.closest(".accordion-item");
+    // wait one frame so display:block / modal "show" has been painted,
+    // then scroll — avoids a forced synchronous layout read.
+    requestAnimationFrame(() => {
+      targetItem.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  eaServiceCards.forEach((card) => {
+    const targetId = card.getAttribute("data-accordion");
+
+    card.addEventListener("click", () => {
+      openVaAccordionItem(targetId);
+    });
+
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openVaAccordionItem(targetId);
+      }
+    });
   });
 });
